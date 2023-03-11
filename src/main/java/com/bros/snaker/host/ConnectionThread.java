@@ -23,10 +23,10 @@ public class ConnectionThread implements Runnable {
             ServerSocket serverSocket = new ServerSocket(Statics.PORT);
             for (int i = 1; i <= numberOfPlayers; i++) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("player connected " + i);
+                System.out.println("Player Connected " + i);
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 out.println(i);
-                Thread thread = new Thread(new MainThread(clientSocket, cyclicBarrier), "Main Thread " + i);
+                Thread thread = new Thread(new MainThread(i, clientSocket, cyclicBarrier), "Main Thread Player-" + i);
                 thread.start();
             }
 

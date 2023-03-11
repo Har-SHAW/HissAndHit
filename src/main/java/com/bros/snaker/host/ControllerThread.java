@@ -1,5 +1,6 @@
 package com.bros.snaker.host;
 
+import com.bros.snaker.config.Directions;
 import com.bros.snaker.config.Statics;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,8 @@ public class ControllerThread implements Runnable {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             while (true) {
-                String response = in.readLine();
-                System.out.println(response + " from player " + playerId);
+                Directions response = Directions.valueOf(in.readLine());
+                Server.directions.set(playerId - 1, response);
             }
 
         } catch (IOException e) {

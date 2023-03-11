@@ -1,10 +1,14 @@
 package com.bros.snaker.host;
 
+import com.bros.snaker.config.Directions;
+import javafx.util.Pair;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 @Data
@@ -12,22 +16,24 @@ import java.util.List;
 public class Server {
     @NonNull
     private int numberOfPlayers;
-
-    private List<List<Integer>> positions;
+    public static List<Deque<Pair<Integer, Integer>>> positions;
+    public static List<Directions> directions;
 
     public void init() {
         positions = new ArrayList<>();
+        directions = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
-            positions.add(new ArrayList<>());
+            positions.add(new LinkedList<>());
+            positions.get(i).addLast(new Pair<>(1, 1));
+            directions.add(Directions.UP);
         }
     }
 
     public void start() {
         List<Thread> threads = new ArrayList<>();
 
-        for (int i = 0; i < numberOfPlayers; i++) {
-            Runnable runnable = new ControllerThread(i + 1);
-            threads.add(new Thread(runnable, "player-" + (i + 1)));
+        for (int i = 1; i <= numberOfPlayers; i++) {
+            threads.add(new Thread(new ControllerThread(i), "Controller Player-" + i));
         }
         for (int i = 0; i < numberOfPlayers; i++) {
             threads.get(i).start();

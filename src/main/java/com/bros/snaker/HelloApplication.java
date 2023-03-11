@@ -1,5 +1,6 @@
 package com.bros.snaker;
 
+import com.bros.snaker.config.Directions;
 import com.bros.snaker.player.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,17 +17,25 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            System.out.println(event.getCode());
+        scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
             try {
                 PrintWriter out = new PrintWriter(Player.controllerSocket.getOutputStream(), true);
-                out.println(event.getCode());
+                if (event.getCode().toString().equals("W")) {
+                    out.println(Directions.UP);
+                } else if (event.getCode().toString().equals("A")) {
+                    out.println(Directions.LEFT);
+                } else if (event.getCode().toString().equals("D")) {
+                    out.println(Directions.RIGHT);
+                } else if (event.getCode().toString().equals("S")) {
+                    out.println(Directions.DOWN);
+                }
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
 
-        stage.setTitle("Hello!");
+        stage.setTitle("Snake");
         stage.setScene(scene);
         stage.show();
     }
