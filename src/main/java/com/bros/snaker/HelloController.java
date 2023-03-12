@@ -2,35 +2,47 @@ package com.bros.snaker;
 
 import com.bros.snaker.host.Server;
 import com.bros.snaker.player.Player;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
+    static List<int[]> resetNodes = new ArrayList<>();
     public static GridPane matrix;
     @FXML
     private BorderPane root;
 
     public static void update() {
         int rows = 100;
-        Pane pane = (Pane) matrix.getChildren().get(Player.positions.get(0).getFirst().getKey() * rows + Player.positions.get(0).getFirst().getValue());
-        pane.getChildren().get(0).setOpacity(0);
-        pane.requestLayout();
+
+        if (!resetNodes.isEmpty()) {
+            for (int[] pair : resetNodes) {
+                Pane pane = (Pane) matrix.getChildren().get(pair[0] * rows + pair[1]);
+                pane.setStyle("-fx-background-color: green");
+                pane.requestLayout();
+            }
+            resetNodes.clear();
+        }
+
+        for (Deque<int[]> player : Player.positions) {
+            for (int[] pair : player) {
+                Pane pane = (Pane) matrix.getChildren().get(pair[0] * rows + pair[1]);
+                pane.setStyle("-fx-background-color: black");
+                pane.requestLayout();
+            }
+            resetNodes.add(player.getFirst());
+        }
     }
 
 
@@ -56,8 +68,9 @@ public class HelloController implements Initializable {
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                Rectangle rectangle1 = new Rectangle(10, 10, Color.GREEN);
-                Pane pane = new Pane(rectangle1);
+                Pane pane = new Pane();
+                pane.setPrefSize(10, 10);
+                pane.setStyle("-fx-background-color: green");
                 matrix.add(pane, col, row);
             }
         }

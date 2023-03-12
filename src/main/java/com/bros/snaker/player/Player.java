@@ -8,10 +8,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.Deque;
-import java.util.List;
 
 public class Player {
-    public static List<Deque<Pair<Integer, Integer>>> positions;
+    public static Deque<int[]>[] positions;
     public static Socket controllerSocket;
     public static Socket UISocket;
 

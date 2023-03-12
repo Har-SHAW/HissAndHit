@@ -6,11 +6,12 @@ import javafx.util.Pair;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Deque;
-import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -22,34 +23,18 @@ public class MainThread implements Runnable {
     Socket socket;
     @NonNull CyclicBarrier cyclicBarrier;
 
-    public static String listToString(List<Deque<Pair<Integer, Integer>>> list) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (Deque<Pair<Integer, Integer>> deque : list) {
-            sb.append("[");
-            for (Pair<Integer, Integer> pair : deque) {
-                sb.append("(").append(pair.getKey()).append(",").append(pair.getValue()).append("),");
-            }
-            if (!deque.isEmpty()) {
-                sb.deleteCharAt(sb.length() - 1);
-            }
-            sb.append("],");
-        }
-        if (!list.isEmpty()) {
-            sb.deleteCharAt(sb.length() - 1);
-        }
-        sb.append("]");
-        return sb.toString();
-    }
-
     @Override
     public void run() {
         try {
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            OutputStream outputStream = socket.getOutputStream();
             while (true) {
                 updatePosition();
                 cyclicBarrier.await();
-                out.println(listToString(Server.positions));
+                ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteOutputStream);
+                objectOutputStream.writeObject(Server.positions);
+                byte[] byteArray = byteOutputStream.toByteArray();
+                outputStream.write(byteArray);
             }
         } catch (InterruptedException | BrokenBarrierException | IOException e) {
             throw new RuntimeException(e);
@@ -58,11 +43,11 @@ public class MainThread implements Runnable {
 
     private void updatePosition() {
         Directions playerDirection = Server.directions.get(playerId - 1);
-        Deque<Pair<Integer, Integer>> pos = Server.positions.get(playerId - 1);
-        Pair<Integer, Integer> next = new Pair<>(
-                pos.getLast().getKey() + Statics.directionValues[playerDirection.ordinal()][0],
-                pos.getLast().getValue() + Statics.directionValues[playerDirection.ordinal()][1]
-        );
+        Deque<int[]> pos = Server.positions[playerId - 1];
+        int[] next = {
+                pos.getLast()[0] + Statics.directionValues[playerDirection.ordinal()][0],
+                pos.getLast()[1] + Statics.directionValues[playerDirection.ordinal()][1]
+        };
 
         pos.addLast(next);
         pos.pollFirst();
