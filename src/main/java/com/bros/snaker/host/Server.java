@@ -2,18 +2,12 @@ package com.bros.snaker.host;
 
 import com.bros.snaker.config.Directions;
 import com.bros.snaker.config.Statics;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 import java.util.*;
 
-@Data
-@RequiredArgsConstructor
 public class Server {
     public static Deque<int[]>[] positions;
     public static List<Directions> directions;
-    @NonNull
     public static int numberOfPlayers;
 
     public void init() {

@@ -1,16 +1,17 @@
 package com.bros.snaker.host;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
 import java.time.Duration;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-@RequiredArgsConstructor
+
 public class PingThread implements Runnable {
-    @NonNull
+
     CyclicBarrier cyclicBarrier;
+
+    PingThread(CyclicBarrier cyclicBarrier) {
+        this.cyclicBarrier = cyclicBarrier;
+    }
 
     @Override
     public void run() {

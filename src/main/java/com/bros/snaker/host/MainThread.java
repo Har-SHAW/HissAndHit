@@ -2,8 +2,6 @@ package com.bros.snaker.host;
 
 import com.bros.snaker.config.Directions;
 import com.bros.snaker.config.Statics;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -15,14 +13,17 @@ import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-@RequiredArgsConstructor
 public class MainThread implements Runnable {
-    @NonNull
     int playerId;
-    @NonNull
     Socket socket;
-    @NonNull CyclicBarrier cyclicBarrier;
+    CyclicBarrier cyclicBarrier;
     Random rand = new Random();
+
+    MainThread(int playerId, Socket socket, CyclicBarrier cyclicBarrier) {
+        this.playerId = playerId;
+        this.socket = socket;
+        this.cyclicBarrier = cyclicBarrier;
+    }
 
     @Override
     public void run() {

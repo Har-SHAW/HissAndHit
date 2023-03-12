@@ -2,8 +2,6 @@ package com.bros.snaker.host;
 
 import com.bros.snaker.config.Directions;
 import com.bros.snaker.config.Statics;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,11 +9,14 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-@RequiredArgsConstructor
+
 public class ControllerThread implements Runnable {
-    @NonNull
     int playerId;
     ServerSocket serverSocket;
+
+    ControllerThread(int i) {
+        this.playerId = i;
+    }
 
     @Override
     public void run() {

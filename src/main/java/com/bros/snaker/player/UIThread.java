@@ -1,8 +1,6 @@
 package com.bros.snaker.player;
 
 import com.bros.snaker.HelloController;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -11,10 +9,12 @@ import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.Deque;
 
-@RequiredArgsConstructor
 public class UIThread implements Runnable {
-    @NonNull
     Socket UISocket;
+
+    UIThread(Socket socket) {
+        this.UISocket = socket;
+    }
 
     @Override
     public void run() {
