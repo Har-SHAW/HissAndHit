@@ -5,5 +5,5 @@ public class Statics {
     public static int ROW = 100;
     public static int COL = 100;
     public static int[][] COMPS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-    public static int FOOD_SIZE = 20;
+    public static int FOOD_SIZE = 30;
 }

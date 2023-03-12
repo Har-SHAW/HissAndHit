@@ -14,7 +14,6 @@ import java.util.Deque;
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class MainThread implements Runnable {
@@ -55,12 +54,17 @@ public class MainThread implements Runnable {
         };
 
         pos.addLast(next);
-        if (Server.positions[Server.numberOfPlayers].stream().noneMatch(e -> e[0] == next[0] && e[1] == next[1])){
+
+        if (Server.positions[Server.numberOfPlayers].stream().noneMatch(e -> e[0] == next[0] && e[1] == next[1])) {
             pos.pollFirst();
-        }else{
-            int[] pop = Server.positions[Server.numberOfPlayers].stream().filter(e -> e[0] == next[0] && e[1] == next[1]).findFirst().get();
+        } else {
+            int[] pop = Server.positions[Server.numberOfPlayers].stream().filter(e -> e[0] == next[0] && e[1] == next[1]).toList().get(0);
             Server.positions[Server.numberOfPlayers].remove(pop);
-            Server.positions[Server.numberOfPlayers].addLast(new int[]{rand.nextInt(99), rand.nextInt(99)});
+            Server.positions[Server.numberOfPlayers].addLast(new int[]{rand.nextInt(Statics.COL), rand.nextInt(Statics.COL)});
+            pos.addLast(new int[]{
+                    next[0] + Statics.COMPS[directions.ordinal()][0],
+                    next[1] + Statics.COMPS[directions.ordinal()][1]
+            });
         }
     }
 }

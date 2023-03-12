@@ -27,7 +27,7 @@ public class Server {
         Random rand = new Random();
         positions[numberOfPlayers] = new LinkedList<>();
         for (int i = 0; i < Statics.FOOD_SIZE; i++) {
-            positions[numberOfPlayers].addLast(new int[]{rand.nextInt(99) + 1, rand.nextInt(99) + 1});
+            positions[numberOfPlayers].addLast(new int[]{rand.nextInt(Statics.COL) + 1, rand.nextInt(Statics.COL) + 1});
         }
     }
 

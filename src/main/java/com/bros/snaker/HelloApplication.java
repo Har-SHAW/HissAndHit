@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class HelloApplication extends Application {
     public static void main(String[] args) {
@@ -44,5 +48,36 @@ public class HelloApplication extends Application {
         stage.setTitle("Snake");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void init() {
+        try {
+            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+            while (networkInterfaces.hasMoreElements()) {
+                NetworkInterface networkInterface = networkInterfaces.nextElement();
+                if (!networkInterface.isUp() || networkInterface.isLoopback() || networkInterface.isVirtual()) {
+                    continue;
+                }
+                Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress address = addresses.nextElement();
+                    if (address.isLinkLocalAddress() || address.isMulticastAddress()) {
+                        continue;
+                    }
+                    if (address.getAddress().length == 4) {
+                        Player.IPAddress = address.getHostAddress();
+                        String[] blocks = address.getHostAddress().split("\\.");
+                        if (blocks.length != 4) {
+                            throw new IllegalArgumentException("Invalid IPv4 address");
+                        }
+                        Player.IPAddressPrefix = blocks[0] + "." + blocks[1] + "." + blocks[2];
+                        Player.roomCode = blocks[3];
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
     }
 }

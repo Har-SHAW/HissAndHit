@@ -12,13 +12,17 @@ public class Player {
     public static Deque<int[]>[] positions;
     public static Socket controllerSocket;
     public static Socket UISocket;
+    public static int playerCount;
+    public static String IPAddress;
+    public static String IPAddressPrefix;
+    public static String roomCode;
 
     public void start() throws IOException {
-        UISocket = new Socket("localhost", Statics.PORT);
+        UISocket = new Socket(Player.IPAddressPrefix + "." + Player.roomCode, Statics.PORT);
         BufferedReader in = new BufferedReader(new InputStreamReader(UISocket.getInputStream()));
         int controllerPort = Integer.parseInt(in.readLine());
 
-        controllerSocket = new Socket("localhost", Statics.PORT + controllerPort);
+        controllerSocket = new Socket(Player.IPAddressPrefix + "." + Player.roomCode, Statics.PORT + controllerPort);
 
         Thread thread = new Thread(new UIThread(UISocket), "Player UI Thread");
         thread.start();

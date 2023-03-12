@@ -5,6 +5,8 @@ import com.bros.snaker.host.Server;
 import com.bros.snaker.player.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -18,6 +20,9 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
     public static GridPane matrix = new GridPane();
     static List<int[]> resetNodes = new ArrayList<>();
+    public TextField playerCount;
+    public TextField roomCode;
+    public Label roomCodeLabel;
     @FXML
     private BorderPane root;
 
@@ -31,13 +36,13 @@ public class HelloController implements Initializable {
             resetNodes.clear();
         }
 
-        for (int[] pair : Player.positions[Player.positions.length - 1]) {
+        for (int[] pair : Player.positions[Player.playerCount]) {
             Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.ROW + pair[1]);
             pane.setStyle("-fx-background-color: yellow");
             pane.requestLayout();
         }
 
-        for (int i = 0; i < Player.positions.length - 1; i++) {
+        for (int i = 0; i < Player.playerCount; i++) {
             for (int[] pair : Player.positions[i]) {
                 Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.ROW + pair[1]);
                 pane.setStyle("-fx-background-color: black");
@@ -49,13 +54,17 @@ public class HelloController implements Initializable {
 
 
     public void onCreateRoom() throws InterruptedException {
+        Player.playerCount = Integer.parseInt(playerCount.getText());
         Server server = new Server();
-        Server.numberOfPlayers = 1;
+        Server.numberOfPlayers = Player.playerCount;
         server.init();
         server.start();
+        Thread.sleep(1000);
+        roomCodeLabel.setText(Player.roomCode);
     }
 
     public void onJoinRoom() throws IOException {
+        Player.roomCode = roomCode.getText();
         Player player = new Player();
         player.start();
     }
@@ -65,7 +74,7 @@ public class HelloController implements Initializable {
         for (int row = 0; row < Statics.ROW; row++) {
             for (int col = 0; col < Statics.COL; col++) {
                 Pane pane = new Pane();
-                pane.setPrefSize(10, 10);
+                pane.setPrefSize(9, 9);
                 pane.setStyle("-fx-background-color: green");
                 matrix.add(pane, col, row);
             }
