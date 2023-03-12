@@ -1,7 +1,6 @@
 package com.bros.snaker.player;
 
 import com.bros.snaker.config.Statics;
-import javafx.util.Pair;
 
 import java.io.BufferedReader;
 import java.io.IOException;

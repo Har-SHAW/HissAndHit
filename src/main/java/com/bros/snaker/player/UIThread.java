@@ -1,7 +1,6 @@
 package com.bros.snaker.player;
 
 import com.bros.snaker.HelloController;
-import javafx.util.Pair;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

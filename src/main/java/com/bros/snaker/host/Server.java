@@ -1,15 +1,12 @@
 package com.bros.snaker.host;
 
 import com.bros.snaker.config.Directions;
-import javafx.util.Pair;
+import com.bros.snaker.config.Statics;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Data
 @RequiredArgsConstructor
@@ -17,16 +14,20 @@ public class Server {
     public static Deque<int[]>[] positions;
     public static List<Directions> directions;
     @NonNull
-    private int numberOfPlayers;
+    public static int numberOfPlayers;
 
     public void init() {
-        positions = new Deque[numberOfPlayers];
+        positions = new Deque[numberOfPlayers + 1];
         directions = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
             positions[i] = new LinkedList<>();
-            int[] arr = {50, 50};
-            positions[i].addLast(arr);
+            positions[i].addLast(new int[]{50, 50});
             directions.add(Directions.UP);
+        }
+        Random rand = new Random();
+        positions[numberOfPlayers] = new LinkedList<>();
+        for (int i = 0; i < Statics.FOOD_SIZE; i++) {
+            positions[numberOfPlayers].addLast(new int[]{rand.nextInt(99) + 1, rand.nextInt(99) + 1});
         }
     }
 
@@ -39,8 +40,6 @@ public class Server {
         for (int i = 0; i < numberOfPlayers; i++) {
             threads.get(i).start();
         }
-
-        System.out.println("controllers done");
 
         Thread thread = new Thread(new ConnectionThread(numberOfPlayers), "Connect Thread");
         thread.start();
