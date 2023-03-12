@@ -1,5 +1,9 @@
 package com.bros.snaker.player;
 
+import com.bros.snaker.HelloController;
+import javafx.application.Platform;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +40,7 @@ public class UIThread implements Runnable {
         return list;
     }
 
+
     @Override
     public void run() {
         try {
@@ -43,7 +48,7 @@ public class UIThread implements Runnable {
             while (true) {
                 String response = in.readLine();
                 Player.positions = stringToList(response);
-                System.out.println(Player.positions);
+                HelloController.update();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

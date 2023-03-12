@@ -14,17 +14,17 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 public class Server {
-    @NonNull
-    private int numberOfPlayers;
     public static List<Deque<Pair<Integer, Integer>>> positions;
     public static List<Directions> directions;
+    @NonNull
+    private int numberOfPlayers;
 
     public void init() {
         positions = new ArrayList<>();
         directions = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
             positions.add(new LinkedList<>());
-            positions.get(i).addLast(new Pair<>(1, 1));
+            positions.get(i).addLast(new Pair<>(50, 50));
             directions.add(Directions.UP);
         }
     }

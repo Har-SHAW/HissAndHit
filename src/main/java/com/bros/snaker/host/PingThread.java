@@ -18,7 +18,7 @@ public class PingThread implements Runnable {
             try {
                 cyclicBarrier.await();
                 cyclicBarrier.reset();
-                Thread.sleep(Duration.ofSeconds(1));
+                Thread.sleep(Duration.ofMillis(200));
             } catch (InterruptedException | BrokenBarrierException e) {
                 throw new RuntimeException(e);
             }
