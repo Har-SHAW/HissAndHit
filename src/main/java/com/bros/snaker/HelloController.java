@@ -29,7 +29,7 @@ public class HelloController implements Initializable {
     public static void update() {
         if (!resetNodes.isEmpty()) {
             for (int[] pair : resetNodes) {
-                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.ROW + pair[1]);
+                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
                 pane.setStyle("-fx-background-color: green");
                 pane.requestLayout();
             }
@@ -37,15 +37,19 @@ public class HelloController implements Initializable {
         }
 
         for (int[] pair : Player.positions[Player.playerCount]) {
-            Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.ROW + pair[1]);
-            pane.setStyle("-fx-background-color: yellow");
-            pane.requestLayout();
+            try {
+                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
+                pane.setStyle("-fx-background-color: yellow; -fx-background-radius: 50%");
+                pane.requestLayout();
+            }catch (Exception e){
+                System.out.println(pair[0] + " " + pair[1]);
+            }
         }
 
         for (int i = 0; i < Player.playerCount; i++) {
             for (int[] pair : Player.positions[i]) {
-                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.ROW + pair[1]);
-                pane.setStyle("-fx-background-color: black");
+                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
+                pane.setStyle("-fx-background-color: black; -fx-background-radius: 50% 50% 0 0");
                 pane.requestLayout();
             }
             resetNodes.add(Player.positions[i].getFirst());
@@ -74,7 +78,7 @@ public class HelloController implements Initializable {
         for (int row = 0; row < Statics.ROW; row++) {
             for (int col = 0; col < Statics.COL; col++) {
                 Pane pane = new Pane();
-                pane.setPrefSize(9, 9);
+                pane.setPrefSize(Statics.SNAKE_CELL_HEIGHT, Statics.SNAKE_CELL_WIDTH);
                 pane.setStyle("-fx-background-color: green");
                 matrix.add(pane, col, row);
             }

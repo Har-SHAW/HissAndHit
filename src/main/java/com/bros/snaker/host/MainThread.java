@@ -61,7 +61,7 @@ public class MainThread implements Runnable {
         } else {
             int[] pop = Server.positions[Server.numberOfPlayers].stream().filter(e -> e[0] == next[0] && e[1] == next[1]).toList().get(0);
             Server.positions[Server.numberOfPlayers].remove(pop);
-            Server.positions[Server.numberOfPlayers].addLast(new int[]{rand.nextInt(Statics.COL), rand.nextInt(Statics.COL)});
+            Server.positions[Server.numberOfPlayers].addLast(new int[]{rand.nextInt(1, Statics.ROW) - 1, rand.nextInt(1, Statics.COL) - 1});
             pos.addLast(new int[]{
                     next[0] + Statics.COMPS[directions.ordinal()][0],
                     next[1] + Statics.COMPS[directions.ordinal()][1]
