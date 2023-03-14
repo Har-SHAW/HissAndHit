@@ -39,4 +39,16 @@ public class SnakeBody {
             return SnakeBodyData.TAIL_RIGHT;
         }
     }
+
+    public static String getHead(int[] before, int[] present) {
+        if (before[0] > present[0]) {
+            return SnakeBodyData.HEAD_TOP;
+        } else if (before[0] < present[0]) {
+            return SnakeBodyData.HEAD_BOTTOM;
+        } else if (before[1] > present[1]) {
+            return SnakeBodyData.HEAD_LEFT;
+        } else {
+            return SnakeBodyData.HEAD_RIGHT;
+        }
+    }
 }
