@@ -3,15 +3,15 @@ package com.bros.snaker.host;
 import com.bros.snaker.config.Directions;
 import com.bros.snaker.config.Statics;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.stream.Collectors;
 
 public class MainThread implements Runnable {
     int playerId;
@@ -25,21 +25,22 @@ public class MainThread implements Runnable {
         this.cyclicBarrier = cyclicBarrier;
     }
 
+    public static String toString(Deque<int[]>[] dequeArray) {
+        String separator = ";";
+        return Arrays.stream(dequeArray)
+                .map(deque -> Arrays.deepToString(deque.toArray(new int[0][])).replaceAll("\\s+", ""))
+                .collect(Collectors.joining(separator));
+    }
+
     @Override
     public void run() {
         try {
-            OutputStream outputStream = socket.getOutputStream();
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             while (true) {
                 updatePosition();
-
-                ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteOutputStream);
-                objectOutputStream.writeObject(Server.positions);
-                byte[] byteArray = byteOutputStream.toByteArray();
-
+                String data = toString(Server.positions);
                 cyclicBarrier.await();
-
-                outputStream.write(byteArray);
+                out.println(data);
             }
         } catch (InterruptedException | BrokenBarrierException | IOException e) {
             throw new RuntimeException(e);

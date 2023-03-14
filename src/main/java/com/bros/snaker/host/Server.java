@@ -15,7 +15,7 @@ public class Server {
         directions = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
             positions[i] = new LinkedList<>();
-            positions[i].addLast(new int[]{50, 50});
+            positions[i].addLast(new int[]{20, 20});
             directions.add(Directions.UP);
         }
         Random rand = new Random();
