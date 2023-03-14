@@ -13,6 +13,8 @@ public class Server {
         for (int i = 0; i < ServerData.numberOfPlayers; i++) {
             ServerData.positions[i] = new LinkedList<>();
             ServerData.positions[i].addLast(new int[]{20, 20});
+            ServerData.positions[i].addLast(new int[]{19, 20});
+            ServerData.positions[i].addLast(new int[]{18, 20});
             ServerData.directions.add(Directions.UP);
         }
         Random rand = new Random();

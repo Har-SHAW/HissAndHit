@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0"
+      xmlns="http://javafx.com/javafx/17">
+   <children>
+      <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Room Code"/>
+      <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                 minWidth="-Infinity" promptText="Player Name"/>
+      <ColorPicker editable="true" promptText="Choose Color"/>
+      <Button mnemonicParsing="false" text="Join Room">
+         <font>
+            <Font name="Fantasque Sans Mono Bold" size="15.0"/>
+         </font>
+      </Button>
+      <GridPane>
+<!--     <Pane style='-fx-background-color: #ff0000; -fx-shape: "M 0 0 L 100 0 L 100 100 L 100 100 Q 0 100 0 0 Z";' prefHeight="100" prefWidth="100"></Pane>-->
+<!--     <Pane style='-fx-background-color: #ff0000; -fx-shape: "M 0 100 L 0 0 L 100 0 A 100 100 0 0 1 0 100 Z";' prefHeight="100" prefWidth="100"></Pane>-->
+<!--     <Pane style='-fx-background-color: #ff0000; -fx-shape: "M 0 0 L 100 0 L 100 100 L 0 100 L 0 100 Q 0 0 100 0 Z";' prefHeight="100" prefWidth="100"></Pane>-->
+<!--         <Pane style='-fx-background-color: #ff0000; -fx-shape: "M 0 50 L 50 0 L 100 50 Z";' prefHeight="100" prefWidth="100"></Pane>-->
+<!--         <Pane style='-fx-background-color: #ff0000; -fx-shape: "M 0 0 L 50 50 L 100 0 Z";' prefHeight="100" prefWidth="100"></Pane>-->
+         <Pane style='-fx-background-color: #ff0000; -fx-shape: "M 50 0 L 0 25 L 50 50 Z";' prefHeight="100" prefWidth="100"></Pane>
+<!--         <Pane style='-fx-background-color: #ff0000; -fx-shape: "M 0 0 L 50 25 L 0 50 Z";' prefHeight="100" prefWidth="100"></Pane>-->
+      </GridPane>
+   </children>
+</VBox>

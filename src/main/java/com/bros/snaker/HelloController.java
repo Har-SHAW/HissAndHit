@@ -5,6 +5,7 @@ import com.bros.snaker.data.PlayerData;
 import com.bros.snaker.data.ServerData;
 import com.bros.snaker.host.Server;
 import com.bros.snaker.player.Player;
+import com.bros.snaker.utils.SnakeBody;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -29,6 +30,9 @@ public class HelloController implements Initializable {
     private BorderPane root;
 
     public static void update() {
+        int players = PlayerData.positions.length - 1;
+        int food = PlayerData.positions.length;
+
         if (!resetNodes.isEmpty()) {
             for (int[] pair : resetNodes) {
                 Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
@@ -38,23 +42,34 @@ public class HelloController implements Initializable {
             resetNodes.clear();
         }
 
-        for (int[] pair : PlayerData.positions[PlayerData.positions.length - 1]) {
-            try {
-                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
+        for (int[] pair : PlayerData.positions[food - 1]) {
+            Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
                 pane.setStyle("-fx-background-color: yellow; -fx-background-radius: 50%");
                 pane.requestLayout();
-            } catch (Exception e) {
-                System.out.println(pair[0] + " " + pair[1]);
-            }
         }
 
-        for (int i = 0; i < PlayerData.positions.length - 1; i++) {
-            for (int[] pair : PlayerData.positions[i]) {
-                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
-                pane.setStyle("-fx-background-color: black; -fx-background-radius: 50% 50% 0 0");
+        for (int i = 0; i < players; i++) {
+            int len = PlayerData.positions[i].length;
+
+            Pane pane = (Pane) matrix.getChildren()
+                    .get(PlayerData.positions[i][len - 1][0] * Statics.COL + PlayerData.positions[i][len - 1][1]);
+            pane.setStyle("-fx-background-color: black;");
+            pane.requestLayout();
+
+            for (int j = 1; j < len - 1; j++) {
+                pane = (Pane) matrix.getChildren()
+                        .get(PlayerData.positions[i][j][0] * Statics.COL + PlayerData.positions[i][j][1]);
+                pane.setStyle("-fx-background-color: black;"
+                        + SnakeBody.getBody(PlayerData.positions[i][j - 1], PlayerData.positions[i][j], PlayerData.positions[i][j + 1]));
                 pane.requestLayout();
             }
-            resetNodes.add(PlayerData.positions[i].getFirst());
+
+            pane = (Pane) matrix.getChildren().get(PlayerData.positions[i][0][0] * Statics.COL + PlayerData.positions[i][0][1]);
+            pane.setStyle("-fx-background-color: black;"
+                    + SnakeBody.getTail(PlayerData.positions[i][1], PlayerData.positions[i][0]));
+            pane.requestLayout();
+
+            resetNodes.add(PlayerData.positions[i][0]);
         }
     }
 

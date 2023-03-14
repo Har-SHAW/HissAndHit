@@ -11,9 +11,11 @@ import java.net.Socket;
 
 public class UIThread implements Runnable {
     Socket UISocket;
+
     UIThread(Socket socket) {
         this.UISocket = socket;
     }
+
     @Override
     public void run() {
         int bytesRead = 0;
