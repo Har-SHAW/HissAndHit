@@ -2,6 +2,7 @@ package com.bros.snaker.host;
 
 import com.bros.snaker.config.Directions;
 import com.bros.snaker.config.Statics;
+import com.bros.snaker.data.ServerData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class ControllerThread implements Runnable {
 
             while (true) {
                 Directions response = Directions.valueOf(in.readLine());
-                Server.directions.set(playerId - 1, response);
+                ServerData.directions.set(playerId - 1, response);
             }
 
         } catch (IOException e) {

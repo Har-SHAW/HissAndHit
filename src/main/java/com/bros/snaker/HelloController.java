@@ -1,6 +1,8 @@
 package com.bros.snaker;
 
 import com.bros.snaker.config.Statics;
+import com.bros.snaker.data.PlayerData;
+import com.bros.snaker.data.ServerData;
 import com.bros.snaker.host.Server;
 import com.bros.snaker.player.Player;
 import javafx.fxml.FXML;
@@ -36,39 +38,38 @@ public class HelloController implements Initializable {
             resetNodes.clear();
         }
 
-        for (int[] pair : Player.positions[Player.playerCount]) {
+        for (int[] pair : PlayerData.positions[PlayerData.positions.length - 1]) {
             try {
                 Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
                 pane.setStyle("-fx-background-color: yellow; -fx-background-radius: 50%");
                 pane.requestLayout();
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(pair[0] + " " + pair[1]);
             }
         }
 
-        for (int i = 0; i < Player.playerCount; i++) {
-            for (int[] pair : Player.positions[i]) {
+        for (int i = 0; i < PlayerData.positions.length - 1; i++) {
+            for (int[] pair : PlayerData.positions[i]) {
                 Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
                 pane.setStyle("-fx-background-color: black; -fx-background-radius: 50% 50% 0 0");
                 pane.requestLayout();
             }
-            resetNodes.add(Player.positions[i].getFirst());
+            resetNodes.add(PlayerData.positions[i].getFirst());
         }
     }
 
 
     public void onCreateRoom() throws InterruptedException {
-        Player.playerCount = Integer.parseInt(playerCount.getText());
         Server server = new Server();
-        Server.numberOfPlayers = Player.playerCount;
+        ServerData.numberOfPlayers = Integer.parseInt(playerCount.getText());
         server.init();
         server.start();
         Thread.sleep(1000);
-        roomCodeLabel.setText(Player.roomCode);
+        roomCodeLabel.setText(PlayerData.roomCode);
     }
 
     public void onJoinRoom() throws IOException {
-        Player.roomCode = roomCode.getText();
+        PlayerData.roomCode = roomCode.getText();
         Player player = new Player();
         player.start();
     }

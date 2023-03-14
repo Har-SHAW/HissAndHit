@@ -1,7 +1,7 @@
 package com.bros.snaker;
 
 import com.bros.snaker.config.Directions;
-import com.bros.snaker.player.Player;
+import com.bros.snaker.data.PlayerData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,9 +26,9 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (Player.controllerSocket != null) {
+            if (PlayerData.controllerSocket != null) {
                 try {
-                    PrintWriter out = new PrintWriter(Player.controllerSocket.getOutputStream(), true);
+                    PrintWriter out = new PrintWriter(PlayerData.controllerSocket.getOutputStream(), true);
                     if (event.getCode().toString().equals("W")) {
                         out.println(Directions.UP);
                     } else if (event.getCode().toString().equals("A")) {
@@ -66,13 +66,13 @@ public class HelloApplication extends Application {
                         continue;
                     }
                     if (address.getAddress().length == 4) {
-                        Player.IPAddress = address.getHostAddress();
+                        PlayerData.IPAddress = address.getHostAddress();
                         String[] blocks = address.getHostAddress().split("\\.");
                         if (blocks.length != 4) {
                             throw new IllegalArgumentException("Invalid IPv4 address");
                         }
-                        Player.IPAddressPrefix = blocks[0] + "." + blocks[1] + "." + blocks[2];
-                        Player.roomCode = blocks[3];
+                        PlayerData.IPAddressPrefix = blocks[0] + "." + blocks[1] + "." + blocks[2];
+                        PlayerData.roomCode = blocks[3];
                     }
                 }
             }

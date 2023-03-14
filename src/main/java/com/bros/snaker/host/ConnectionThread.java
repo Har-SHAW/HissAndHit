@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.CyclicBarrier;
 
 public class ConnectionThread implements Runnable {
     int numberOfPlayers;
@@ -17,20 +16,19 @@ public class ConnectionThread implements Runnable {
 
     @Override
     public void run() {
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(numberOfPlayers + 1);
-
         try {
             ServerSocket serverSocket = new ServerSocket(Statics.PORT);
+            Socket[] clients = new Socket[numberOfPlayers];
+
             for (int i = 1; i <= numberOfPlayers; i++) {
                 Socket clientSocket = serverSocket.accept();
+                clients[i - 1] = clientSocket;
                 System.out.println("Player Connected " + i);
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 out.println(i);
-                Thread thread = new Thread(new MainThread(i, clientSocket, cyclicBarrier), "Main Thread Player-" + i);
-                thread.start();
             }
 
-            Thread thread = new Thread(new PingThread(cyclicBarrier), "Ping Thread");
+            Thread thread = new Thread(new MainThread(clients), "Boss Thread");
             thread.start();
 
         } catch (IOException e) {
