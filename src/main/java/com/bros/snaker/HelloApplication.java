@@ -1,6 +1,5 @@
 package com.bros.snaker;
 
-import com.bros.snaker.config.Directions;
 import com.bros.snaker.data.PlayerData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,13 +29,13 @@ public class HelloApplication extends Application {
                 try {
                     PrintWriter out = new PrintWriter(PlayerData.controllerSocket.getOutputStream(), true);
                     if (event.getCode().toString().equals("W")) {
-                        out.println(Directions.UP);
+                        out.println("UP");
                     } else if (event.getCode().toString().equals("A")) {
-                        out.println(Directions.LEFT);
+                        out.println("LEFT");
                     } else if (event.getCode().toString().equals("D")) {
-                        out.println(Directions.RIGHT);
+                        out.println("RIGHT");
                     } else if (event.getCode().toString().equals("S")) {
-                        out.println(Directions.DOWN);
+                        out.println("DOWN");
                     }
 
                 } catch (IOException e) {

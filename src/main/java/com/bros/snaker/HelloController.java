@@ -51,29 +51,31 @@ public class HelloController implements Initializable {
 
         for (int i = 0; i < players; i++) {
             int len = PlayerData.positions[i].length;
+            int[][] playerPositions = PlayerData.positions[i];
             String color = "#" + Integer.toHexString(PlayerData.positions[meta - 1][i][0]);
 
-            Pane pane = (Pane) matrix.getChildren().get(PlayerData.positions[i][0][0] * Statics.COL + PlayerData.positions[i][0][1]);
-            pane.setStyle("-fx-background-color: " + color + ";"
-                    + SnakeBody.getTail(PlayerData.positions[i][1], PlayerData.positions[i][0]));
+            StringBuilder style = new StringBuilder("-fx-background-color: ").append(color)
+                    .append(";");
+
+            Pane pane = (Pane) matrix.getChildren().get(playerPositions[0][0] * Statics.COL + playerPositions[0][1]);
+            pane.setStyle(style + SnakeBody.getTail(playerPositions[1], playerPositions[0]));
             pane.requestLayout();
 
             for (int j = 1; j < len - 1; j++) {
                 pane = (Pane) matrix.getChildren()
-                        .get(PlayerData.positions[i][j][0] * Statics.COL + PlayerData.positions[i][j][1]);
-                pane.setStyle("-fx-background-color: " + color + ";"
-                        + SnakeBody.getBody(PlayerData.positions[i][j - 1], PlayerData.positions[i][j], PlayerData.positions[i][j + 1]));
+                        .get(playerPositions[j][0] * Statics.COL + playerPositions[j][1]);
+                pane.setStyle(style + SnakeBody.getBody(playerPositions[j - 1], playerPositions[j], playerPositions[j + 1]));
                 pane.requestLayout();
             }
 
             pane = (Pane) matrix.getChildren()
-                    .get(PlayerData.positions[i][len - 1][0] * Statics.COL + PlayerData.positions[i][len - 1][1]);
-            pane.setStyle("-fx-background-color: " + color + ";"
-                    + SnakeBody.getHead(PlayerData.positions[i][len - 2], PlayerData.positions[i][len - 1]));
+                    .get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1]);
+            pane.setStyle(style + SnakeBody.getHead(playerPositions[len - 2], playerPositions[len - 1]));
             pane.requestLayout();
 
-            resetNodes.add(PlayerData.positions[i][0]);
+            resetNodes.add(playerPositions[0]);
         }
+        matrix.requestLayout();
     }
 
 

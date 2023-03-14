@@ -18,18 +18,14 @@ public class UIThread implements Runnable {
 
     @Override
     public void run() {
-        int bytesRead = 0;
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(UISocket.getInputStream()));
             while (true) {
-                String message = reader.readLine();
-                PlayerData.positions = Converter.fromString(message);
+                PlayerData.positions = Converter.fromString(reader.readLine());
                 HelloController.update();
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Data Loss");
-            System.out.println(bytesRead);
         }
 
     }

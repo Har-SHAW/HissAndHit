@@ -2,23 +2,21 @@ package com.bros.snaker.utils;
 
 import java.util.Arrays;
 import java.util.Deque;
-import java.util.stream.Collectors;
 
 public class Converter {
     public static int[][][] fromString(String data) {
         String[] dequeStrings = data.split(";");
         int[][][] dequeArray = new int[dequeStrings.length][][];
         for (int i = 0; i < dequeStrings.length; i++) {
-            String[] intStrings = dequeStrings[i]
-                    .replace("[[", "")
-                    .replace("]]", "")
-                    .split("],\\[");
-
+            String intString = dequeStrings[i].substring(2, dequeStrings[i].length() - 2);
+            String[] intStrings = intString.split("],\\[");
             int[][] deque = new int[intStrings.length][];
-
             for (int j = 0; j < intStrings.length; j++) {
                 String[] ints = intStrings[j].split(",");
-                deque[j] = Arrays.stream(ints).mapToInt(Integer::parseInt).toArray();
+                deque[j] = new int[ints.length];
+                for (int k = 0; k < ints.length; k++) {
+                    deque[j][k] = Integer.parseInt(ints[k]);
+                }
             }
             dequeArray[i] = deque;
         }
@@ -26,9 +24,12 @@ public class Converter {
     }
 
     public static String toString(Deque<int[]>[] dequeArray) {
+        StringBuilder sb = new StringBuilder();
         String separator = ";";
-        return Arrays.stream(dequeArray)
-                .map(deque -> Arrays.deepToString(deque.toArray()).replaceAll("\\s+", ""))
-                .collect(Collectors.joining(separator));
+        for (Deque<int[]> deque : dequeArray) {
+            sb.append(Arrays.deepToString(deque.toArray()).replaceAll("\\s+", ""));
+            sb.append(separator);
+        }
+        return sb.toString();
     }
 }
