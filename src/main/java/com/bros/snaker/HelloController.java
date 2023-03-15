@@ -22,9 +22,12 @@ import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
     public static GridPane matrix = new GridPane();
-    static List<int[]> resetNodes = new ArrayList<>();
+    private static final List<int[]> resetNodes = new ArrayList<>();
+    @FXML
     public TextField playerCount;
+    @FXML
     public TextField roomCode;
+    @FXML
     public Label roomCodeLabel;
     @FXML
     private BorderPane root;

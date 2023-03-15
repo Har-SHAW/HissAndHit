@@ -3,10 +3,10 @@ package com.bros.snaker.data;
 import com.bros.snaker.config.Statics;
 
 public class SnakeBodyData {
-    public static String B_T_R = "-fx-background-radius: " + (Statics.SNAKE_CELL_HEIGHT - 8) + " 0 0 0 ;";
-    public static String B_T_L = "-fx-background-radius: 0 " + (Statics.SNAKE_CELL_HEIGHT - 8) + " 0 0;";
-    public static String L_T_T = "-fx-background-radius: 0 0 " + (Statics.SNAKE_CELL_HEIGHT - 8) + " 0;";
-    public static String R_T_T = "-fx-background-radius: 0 0 0 " + (Statics.SNAKE_CELL_HEIGHT - 8) + ";";
+    public static String B_T_R = "-fx-background-radius: " + (Statics.SNAKE_CELL_HEIGHT - 6) + " 0 0 0 ;";
+    public static String B_T_L = "-fx-background-radius: 0 " + (Statics.SNAKE_CELL_HEIGHT - 6) + " 0 0;";
+    public static String L_T_T = "-fx-background-radius: 0 0 " + (Statics.SNAKE_CELL_HEIGHT - 6) + " 0;";
+    public static String R_T_T = "-fx-background-radius: 0 0 0 " + (Statics.SNAKE_CELL_HEIGHT - 6) + ";";
     public static String HEAD_TOP = "-fx-background-radius: " + Statics.SNAKE_CELL_HEIGHT + " " + Statics.SNAKE_CELL_HEIGHT + " 0 0;";
     public static String HEAD_RIGHT = "-fx-background-radius: 0 " + Statics.SNAKE_CELL_HEIGHT + " " + Statics.SNAKE_CELL_HEIGHT + " 0;";
     public static String HEAD_BOTTOM = "-fx-background-radius: 0 0 " + Statics.SNAKE_CELL_HEIGHT + " " + Statics.SNAKE_CELL_HEIGHT + ";";
