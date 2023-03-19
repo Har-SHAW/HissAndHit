@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
-    public static GridPane matrix = new GridPane();
+public class GameController implements Initializable {
+    public static final GridPane matrix = new GridPane();
     private static final List<int[]> resetNodes = new ArrayList<>();
     @FXML
     public TextField playerCount;

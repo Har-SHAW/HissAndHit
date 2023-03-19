@@ -115,7 +115,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.bros.snaker.HelloApplication</mainClass>
+                            <mainClass>com.bros.snaker.GameBoard</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
@@ -134,7 +134,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.bros.snaker.HelloApplication</mainClass>
+                            <mainClass>com.bros.snaker.GameBoard</mainClass>
                         </manifest>
                         <manifestEntries>
                             <JavaFX-SDK></JavaFX-SDK>
@@ -157,7 +157,7 @@
                             <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.bros.snaker.HelloApplication</mainClass>
+                                    <mainClass>com.bros.snaker.GameBoard</mainClass>
                                 </transformer>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>

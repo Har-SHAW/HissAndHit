@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class Directions {
     public static Map<String, Integer> data = new HashMap<>() {{
-        put("UP", 0);
-        put("DOWN", 1);
-        put("LEFT", 2);
-        put("RIGHT", 3);
+        put("W", 0);
+        put("S", 1);
+        put("A", 2);
+        put("D", 3);
     }};
 }

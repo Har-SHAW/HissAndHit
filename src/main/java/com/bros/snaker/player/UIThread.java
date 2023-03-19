@@ -1,6 +1,6 @@
 package com.bros.snaker.player;
 
-import com.bros.snaker.HelloController;
+import com.bros.snaker.GameController;
 import com.bros.snaker.data.PlayerData;
 import com.bros.snaker.utils.Converter;
 
@@ -22,7 +22,7 @@ public class UIThread implements Runnable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(UISocket.getInputStream()));
             while (true) {
                 PlayerData.positions = Converter.fromString(reader.readLine());
-                HelloController.update();
+                GameController.update();
             }
         } catch (IOException e) {
             e.printStackTrace();

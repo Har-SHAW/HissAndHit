@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Deque;
 import java.util.Random;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -43,10 +44,10 @@ public class MainThread implements Runnable {
 
     @Override
     public void run() {
-        PrintWriter[] out = new PrintWriter[ServerData.numberOfPlayers];
+        ConcurrentLinkedQueue<PrintWriter> writers = new ConcurrentLinkedQueue<>();
         for (int i = 0; i < ServerData.numberOfPlayers; i++) {
             try {
-                out[i] = new PrintWriter(sockets[i].getOutputStream(), true);
+                writers.offer(new PrintWriter(sockets[i].getOutputStream(), true));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -59,7 +60,7 @@ public class MainThread implements Runnable {
             String data = Converter.toString(ServerData.positions);
             try {
                 Thread.sleep(100);
-                for (PrintWriter printWriter : out) {
+                for (PrintWriter printWriter : writers) {
                     executor.submit(() -> printWriter.println(data));
                 }
             } catch (InterruptedException e) {
