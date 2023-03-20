@@ -28,11 +28,13 @@ public class ConnectionThread implements Runnable {
                 out.println(i);
             }
 
+            serverSocket.close();
+
             Thread thread = new Thread(new MainThread(clients), "Boss Thread");
             thread.start();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
