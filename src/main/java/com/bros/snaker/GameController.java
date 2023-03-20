@@ -87,7 +87,7 @@ public class GameController implements Initializable {
 
     public void onCreateRoom() throws InterruptedException {
         Server server = new Server();
-        ServerData.numberOfPlayers = Integer.parseInt(playerCount.getText());
+        ServerData.playerCount = Integer.parseInt(playerCount.getText());
         server.init();
         server.start();
         Thread.sleep(1000);

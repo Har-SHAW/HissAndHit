@@ -32,4 +32,13 @@ public class Converter {
         }
         return sb.toString();
     }
+
+    public static int cantorPair(int x, int y) {
+        return ((x + y) * (x + y + 1) / 2) + y;
+    }
+
+    public static int cantorPair(int x, int y, int z) {
+        int pairXY = cantorPair(x, y);
+        return cantorPair(pairXY, z);
+    }
 }
