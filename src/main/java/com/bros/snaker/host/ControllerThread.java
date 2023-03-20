@@ -30,7 +30,10 @@ public class ControllerThread implements Runnable {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             while (true) {
-                ServerData.directions[playerId] = Directions.data.get(in.readLine());
+                Integer data = Directions.data.get(in.readLine());
+                if (data != null) {
+                    ServerData.directions[playerId] = data;
+                }
             }
 
         } catch (IOException e) {

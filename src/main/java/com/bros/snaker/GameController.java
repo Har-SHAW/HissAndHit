@@ -1,5 +1,6 @@
 package com.bros.snaker;
 
+import com.bros.snaker.config.MetaIndexes;
 import com.bros.snaker.config.Statics;
 import com.bros.snaker.data.PlayerData;
 import com.bros.snaker.data.ServerData;
@@ -17,6 +18,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,45 +41,46 @@ public class GameController implements Initializable {
 
         if (!resetNodes.isEmpty()) {
             for (int[] pair : resetNodes) {
-                Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
-                pane.setStyle("-fx-background-color: green");
-                pane.requestLayout();
+                matrix.getChildren().get(pair[0] * Statics.COL + pair[1])
+                        .setStyle("-fx-background-color: green");
             }
             resetNodes.clear();
         }
 
         for (int[] pair : PlayerData.positions[food - 1]) {
-            Pane pane = (Pane) matrix.getChildren().get(pair[0] * Statics.COL + pair[1]);
-                pane.setStyle("-fx-background-color: yellow; -fx-background-radius: 50%");
-                pane.requestLayout();
+            matrix.getChildren().get(pair[0] * Statics.COL + pair[1])
+                    .setStyle("-fx-background-color: yellow; -fx-background-radius: 50%");
         }
 
         for (int i = 0; i < players; i++) {
+            if (PlayerData.positions[meta - 1][i][MetaIndexes.IS_DEAD] > 0) {
+                Collections.addAll(resetNodes, PlayerData.positions[i]);
+                continue;
+            }
             int len = PlayerData.positions[i].length;
             int[][] playerPositions = PlayerData.positions[i];
-            String color = "#" + Integer.toHexString(PlayerData.positions[meta - 1][i][0]);
+            String color = "#" + Integer.toHexString(PlayerData.positions[meta - 1][i][MetaIndexes.COLOR]);
 
             StringBuilder style = new StringBuilder("-fx-background-color: ").append(color)
                     .append(";");
 
-            Pane pane = (Pane) matrix.getChildren().get(playerPositions[0][0] * Statics.COL + playerPositions[0][1]);
-            pane.setStyle(style + SnakeBody.getTail(playerPositions[1], playerPositions[0]));
-            pane.requestLayout();
+            matrix.getChildren()
+                    .get(playerPositions[0][0] * Statics.COL + playerPositions[0][1])
+                    .setStyle(style + SnakeBody.getTail(playerPositions[1], playerPositions[0]));
 
             for (int j = 1; j < len - 1; j++) {
-                pane = (Pane) matrix.getChildren()
-                        .get(playerPositions[j][0] * Statics.COL + playerPositions[j][1]);
-                pane.setStyle(style + SnakeBody.getBody(playerPositions[j - 1], playerPositions[j], playerPositions[j + 1]));
-                pane.requestLayout();
+                matrix.getChildren()
+                        .get(playerPositions[j][0] * Statics.COL + playerPositions[j][1])
+                        .setStyle(style + SnakeBody.getBody(playerPositions[j - 1], playerPositions[j], playerPositions[j + 1]));
             }
 
-            pane = (Pane) matrix.getChildren()
-                    .get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1]);
-            pane.setStyle(style + SnakeBody.getHead(playerPositions[len - 2], playerPositions[len - 1]));
-            pane.requestLayout();
+            matrix.getChildren()
+                    .get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1])
+                    .setStyle(style + SnakeBody.getHead(playerPositions[len - 2], playerPositions[len - 1]));
 
             resetNodes.add(playerPositions[0]);
         }
+
         matrix.requestLayout();
     }
 

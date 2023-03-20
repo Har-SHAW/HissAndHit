@@ -9,14 +9,14 @@ public class Server {
     public void init() {
         ServerData.positions = new Deque[ServerData.numberOfPlayers + 2];
         ServerData.directions = new int[ServerData.numberOfPlayers];
-        ServerData.positions[ServerData.numberOfPlayers + 1] = new ArrayDeque<>();
+        ServerData.positions[ServerData.numberOfPlayers + 1] = new LinkedList<>();
         for (int i = 0; i < ServerData.numberOfPlayers; i++) {
             ServerData.positions[i] = new LinkedList<>();
             ServerData.positions[i].addLast(new int[]{20, 20});
             ServerData.positions[i].addLast(new int[]{19, 20});
             ServerData.positions[i].addLast(new int[]{18, 20});
             ServerData.directions[i] = 0;
-            ServerData.positions[ServerData.numberOfPlayers + 1].addLast(new int[]{6357019});
+            ServerData.positions[ServerData.numberOfPlayers + 1].addLast(new int[]{6357019, 0});
         }
         Random rand = new Random();
         ServerData.positions[ServerData.numberOfPlayers] = new ArrayDeque<>();

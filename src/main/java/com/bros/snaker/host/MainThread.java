@@ -1,5 +1,6 @@
 package com.bros.snaker.host;
 
+import com.bros.snaker.config.MetaIndexes;
 import com.bros.snaker.config.Statics;
 import com.bros.snaker.data.ServerData;
 import com.bros.snaker.utils.Converter;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Deque;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
@@ -28,6 +30,11 @@ public class MainThread implements Runnable {
             int[] last = pos.getLast();
             int[] comp = Statics.COMPS[ServerData.directions[i]];
             int[] next = {last[0] + comp[0], last[1] + comp[1]};
+
+            if (next[0] < 0 || next[1] < 0 || next[0] >= Statics.ROW || next[1] >= Statics.COL) {
+                ((List<int[]>) ServerData.positions[ServerData.numberOfPlayers + 1]).get(i)[MetaIndexes.IS_DEAD] = 1;
+                continue;
+            }
 
             pos.addLast(next);
 
