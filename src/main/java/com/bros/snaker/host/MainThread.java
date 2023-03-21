@@ -30,7 +30,7 @@ public class MainThread implements Runnable {
         }
         for (int i = 0; i < ServerData.playerCount; i++) {
             if (i == player) continue;
-            if (containsInHashSet(next, player)) {
+            if (containsInHashSet(next, i)) {
                 return true;
             }
         }
@@ -103,10 +103,10 @@ public class MainThread implements Runnable {
 
         while (true) {
             try {
-                cyclicBarrier.reset();
                 updatePosition();
                 String data = Converter.toString(ServerData.positions);
                 Thread.sleep(100);
+                cyclicBarrier.reset();
                 for (PrintWriter printWriter : writers) {
                     executor.submit(() -> {
                         try {
