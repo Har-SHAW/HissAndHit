@@ -1,4 +1,4 @@
-package com.bros.snaker.data;
+package com.bros.HissAndHit.data;
 
 import java.net.Socket;
 

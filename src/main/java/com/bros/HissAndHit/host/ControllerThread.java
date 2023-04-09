@@ -1,8 +1,8 @@
-package com.bros.snaker.host;
+package com.bros.HissAndHit.host;
 
-import com.bros.snaker.config.Directions;
-import com.bros.snaker.config.Statics;
-import com.bros.snaker.data.ServerData;
+import com.bros.HissAndHit.config.Directions;
+import com.bros.HissAndHit.config.Statics;
+import com.bros.HissAndHit.data.ServerData;
 
 import java.io.BufferedReader;
 import java.io.IOException;

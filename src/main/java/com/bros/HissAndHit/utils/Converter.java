@@ -1,4 +1,4 @@
-package com.bros.snaker.utils;
+package com.bros.HissAndHit.utils;
 
 import java.util.Arrays;
 import java.util.Deque;

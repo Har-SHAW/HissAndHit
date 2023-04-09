@@ -1,4 +1,4 @@
-package com.bros.snaker.config;
+package com.bros.HissAndHit.config;
 
 import java.util.HashMap;
 import java.util.Map;

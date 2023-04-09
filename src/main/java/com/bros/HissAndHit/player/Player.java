@@ -1,8 +1,8 @@
-package com.bros.snaker.player;
+package com.bros.HissAndHit.player;
 
-import com.bros.snaker.GameBoard;
-import com.bros.snaker.config.Statics;
-import com.bros.snaker.data.PlayerData;
+import com.bros.HissAndHit.GameBoard;
+import com.bros.HissAndHit.config.Statics;
+import com.bros.HissAndHit.data.PlayerData;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package com.bros.snaker.utils;
+package com.bros.HissAndHit.utils;
 
-import com.bros.snaker.data.SnakeBodyData;
+import com.bros.HissAndHit.data.SnakeBodyData;
 
 public class SnakeBody {
     public static String getBody(int[] before, int[] present, int[] next) {

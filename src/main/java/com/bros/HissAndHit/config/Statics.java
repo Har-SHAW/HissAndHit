@@ -1,4 +1,4 @@
-package com.bros.snaker.config;
+package com.bros.HissAndHit.config;
 
 public class Statics {
     public static int PORT = 8080;

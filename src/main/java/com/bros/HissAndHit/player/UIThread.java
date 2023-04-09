@@ -1,8 +1,8 @@
-package com.bros.snaker.player;
+package com.bros.HissAndHit.player;
 
-import com.bros.snaker.GameController;
-import com.bros.snaker.data.PlayerData;
-import com.bros.snaker.utils.Converter;
+import com.bros.HissAndHit.GameController;
+import com.bros.HissAndHit.data.PlayerData;
+import com.bros.HissAndHit.utils.Converter;
 
 import java.io.BufferedReader;
 import java.io.IOException;

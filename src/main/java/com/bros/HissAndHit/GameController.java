@@ -1,12 +1,12 @@
-package com.bros.snaker;
+package com.bros.HissAndHit;
 
-import com.bros.snaker.config.MetaIndexes;
-import com.bros.snaker.config.Statics;
-import com.bros.snaker.data.PlayerData;
-import com.bros.snaker.data.ServerData;
-import com.bros.snaker.host.Server;
-import com.bros.snaker.player.Player;
-import com.bros.snaker.utils.SnakeBody;
+import com.bros.HissAndHit.config.MetaIndexes;
+import com.bros.HissAndHit.config.Statics;
+import com.bros.HissAndHit.data.PlayerData;
+import com.bros.HissAndHit.data.ServerData;
+import com.bros.HissAndHit.host.Server;
+import com.bros.HissAndHit.player.Player;
+import com.bros.HissAndHit.utils.SnakeBody;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -59,9 +59,9 @@ public class GameController implements Initializable {
             }
             int len = PlayerData.positions[i].length;
             int[][] playerPositions = PlayerData.positions[i];
-            String color = "#" + Integer.toHexString(PlayerData.positions[meta - 1][i][MetaIndexes.COLOR]);
 
-            StringBuilder style = new StringBuilder("-fx-background-color: ").append(color)
+            StringBuilder style = new StringBuilder("-fx-background-color: ")
+                    .append("#").append(Integer.toHexString(PlayerData.positions[meta - 1][i][MetaIndexes.COLOR]))
                     .append(";");
 
             matrix.getChildren()

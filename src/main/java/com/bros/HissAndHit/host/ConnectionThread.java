@@ -1,6 +1,6 @@
-package com.bros.snaker.host;
+package com.bros.HissAndHit.host;
 
-import com.bros.snaker.config.Statics;
+import com.bros.HissAndHit.config.Statics;
 
 import java.io.IOException;
 import java.io.PrintWriter;

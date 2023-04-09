@@ -1,6 +1,6 @@
-package com.bros.snaker.data;
+package com.bros.HissAndHit.data;
 
-import com.bros.snaker.config.Statics;
+import com.bros.HissAndHit.config.Statics;
 
 public class SnakeBodyData {
     public static String B_T_R = "-fx-background-radius: " + (Statics.SNAKE_CELL_HEIGHT - 6) + " 0 0 0 ;";

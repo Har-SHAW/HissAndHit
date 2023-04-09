@@ -1,11 +1,11 @@
-package com.bros.snaker.data;
+package com.bros.HissAndHit.data;
 
 import java.util.Deque;
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class ServerData {
     public static Deque<int[]>[] positions;
-    public static HashSet<Integer> hashSet;
+    public static HashMap<Integer, Integer> hashMap;
     public static int[] directions;
     public static int playerCount;
 }
