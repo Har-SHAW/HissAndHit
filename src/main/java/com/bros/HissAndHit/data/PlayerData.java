@@ -7,6 +7,6 @@ public class PlayerData {
     public static Socket controllerSocket;
     public static Socket UISocket;
     public static String IPAddress;
-    public static String IPAddressPrefix;
     public static String roomCode;
+    public static String roomIpAddress;
 }

@@ -5,6 +5,7 @@ import com.bros.HissAndHit.data.ServerData;
 import com.bros.HissAndHit.utils.Converter;
 
 import java.util.*;
+import java.util.concurrent.CyclicBarrier;
 
 public class Server {
     public void init() {
@@ -12,6 +13,7 @@ public class Server {
         ServerData.directions = new int[ServerData.playerCount];
         ServerData.positions[ServerData.playerCount + 1] = new LinkedList<>();
         ServerData.hashMap = new HashMap<>();
+        ServerData.readyBarrier = new CyclicBarrier(ServerData.playerCount + 1);
         for (int i = 0; i < ServerData.playerCount; i++) {
             ServerData.positions[i] = new LinkedList<>();
             ServerData.positions[i].addLast(new int[]{20, 20 + i});
@@ -19,16 +21,18 @@ public class Server {
             ServerData.positions[i].addLast(new int[]{18, 20 + i});
             ServerData.directions[i] = 0;
             ServerData.positions[ServerData.playerCount + 1].addLast(new int[]{6357019 + i * 10, 0});
-            ServerData.hashMap.put(Converter.cantorPair(20, 20 + i), i + 1);
-            ServerData.hashMap.put(Converter.cantorPair(19, 20 + i), i + 1);
-            ServerData.hashMap.put(Converter.cantorPair(18, 20 + i), i + 1);
+            ServerData.hashMap.put(Converter.cantorPair(20, 20 + i), i);
+            ServerData.hashMap.put(Converter.cantorPair(19, 20 + i), i);
+            ServerData.hashMap.put(Converter.cantorPair(18, 20 + i), i);
         }
+
+        ServerData.foodMap = new HashMap<>();
         Random rand = new Random();
         ServerData.positions[ServerData.playerCount] = new ArrayDeque<>();
         for (int i = 0; i < Statics.FOOD_SIZE; i++) {
             int[] food = new int[]{rand.nextInt(1, Statics.ROW) - 1, rand.nextInt(1, Statics.COL) - 1};
             ServerData.positions[ServerData.playerCount].addLast(food);
-            ServerData.hashMap.put(Converter.cantorPair(food[0], food[1]), ServerData.playerCount + 1);
+            ServerData.foodMap.put(Converter.cantorPair(food[0], food[1]), food);
         }
     }
 

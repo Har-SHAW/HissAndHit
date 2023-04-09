@@ -24,17 +24,28 @@ public class MainThread implements Runnable {
         this.metaData = (List<int[]>) ServerData.positions[ServerData.playerCount + 1];
     }
 
-    private void addToMap(int[] pair, int player) {
-        ServerData.hashMap.put(Converter.cantorPair(pair[0], pair[1]), player + 1);
+    private void addToPlayer(int[] pair, int player) {
+        ServerData.hashMap.put(Converter.cantorPair(pair[0], pair[1]), player);
     }
 
-    private void removeFromMap(int[] pair) {
+    private void removeFromPlayer(int[] pair) {
         ServerData.hashMap.remove(Converter.cantorPair(pair[0], pair[1]));
     }
 
-    private Integer containsInMap(int[] pair) {
-        int pairValue = Converter.cantorPair(pair[0], pair[1]);
-        return ServerData.hashMap.get(pairValue);
+    private Integer containsInPlayer(int[] pair) {
+        return ServerData.hashMap.get(Converter.cantorPair(pair[0], pair[1]));
+    }
+
+    private int[] containsInFood(int[] pair) {
+        return ServerData.foodMap.get(Converter.cantorPair(pair[0], pair[1]));
+    }
+
+    private void addToFood(int[] pair, int[] food) {
+        ServerData.foodMap.put(Converter.cantorPair(pair[0], pair[1]), food);
+    }
+
+    private void removeFromFood(int[] pair) {
+        ServerData.foodMap.remove(Converter.cantorPair(pair[0], pair[1]));
     }
 
     private void updatePosition() {
@@ -54,28 +65,29 @@ public class MainThread implements Runnable {
                 continue;
             }
 
-            Integer echo = containsInMap(next);
-            if (echo == null) {
+            Integer echo = containsInPlayer(next);
+            int[] foodVal = containsInFood(next);
+
+            if (echo == null && foodVal == null) {
                 int[] removed = pos.pollFirst();
                 assert removed != null;
-                removeFromMap(removed);
-            } else if (echo == ServerData.playerCount + 1) {
-                int[] pop = ServerData.positions[ServerData.playerCount].stream()
-                        .filter(e -> e[0] == next[0] && e[1] == next[1]).findFirst().orElse(null);
-                assert pop != null;
-                removeFromMap(pop);
-                ServerData.positions[ServerData.playerCount].remove(pop);
-
-                int[] food = new int[]{rand.nextInt(Statics.ROW - 1), rand.nextInt(Statics.COL - 1)};
-                ServerData.positions[ServerData.playerCount].addLast(food);
-                addToMap(food, ServerData.playerCount);
-            } else if (echo > 0 && echo != i + 1) {
+                removeFromPlayer(removed);
+            } else if (echo != null && echo != i) {
                 metaData.get(i)[MetaIndexes.IS_DEAD] = 1;
                 continue;
             }
 
+            if (foodVal != null) {
+                removeFromFood(foodVal);
+                ServerData.positions[ServerData.playerCount].remove(foodVal);
+
+                int[] food = new int[]{rand.nextInt(Statics.ROW - 1), rand.nextInt(Statics.COL - 1)};
+                ServerData.positions[ServerData.playerCount].addLast(food);
+                addToFood(food, food);
+            }
+
             pos.addLast(next);
-            addToMap(next, i);
+            addToPlayer(next, i);
         }
     }
 
@@ -93,8 +105,9 @@ public class MainThread implements Runnable {
         ExecutorService executor = Executors.newFixedThreadPool(ServerData.playerCount);
         CyclicBarrier cyclicBarrier = new CyclicBarrier(ServerData.playerCount);
 
-        while (true) {
-            try {
+        try {
+            ServerData.readyBarrier.await();
+            while (true) {
                 updatePosition();
                 String data = Converter.toString(ServerData.positions);
                 Thread.sleep(100);
@@ -109,9 +122,11 @@ public class MainThread implements Runnable {
                         }
                     });
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (BrokenBarrierException e) {
+            throw new RuntimeException(e);
         }
     }
 }

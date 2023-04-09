@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +26,8 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable {
     public static final GridPane matrix = new GridPane();
     private static final List<int[]> resetNodes = new ArrayList<>();
+    private static final double height = Screen.getPrimary().getBounds().getHeight();
+    private static final double width = Screen.getPrimary().getBounds().getWidth();
     @FXML
     public TextField playerCount;
     @FXML
@@ -105,12 +108,13 @@ public class GameController implements Initializable {
         for (int row = 0; row < Statics.ROW; row++) {
             for (int col = 0; col < Statics.COL; col++) {
                 Pane pane = new Pane();
-                pane.setPrefSize(Statics.SNAKE_CELL_HEIGHT, Statics.SNAKE_CELL_WIDTH);
+                pane.setPrefSize(height / Statics.ROW, width / Statics.COL);
                 pane.setStyle("-fx-background-color: green");
                 matrix.add(pane, col, row);
             }
         }
 
+        matrix.setStyle("-fx-background-color: green;");
         root.setCenter(matrix);
     }
 }

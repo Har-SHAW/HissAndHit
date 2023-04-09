@@ -5,35 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d71ac6a8-f961-4b01-a696-d4d1007dba3b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/snaker_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/config/Directions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Directions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/config/MetaIndexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/MetaIndexes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/config/Statics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Statics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/data/ServerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/ServerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/data/SnakeBodyData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/SnakeBodyData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/host/ConnectionThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ConnectionThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/host/ControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ControllerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/host/MainThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/MainThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/host/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/player/UIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/UIThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/utils/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/snaker/utils/SnakeBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/SnakeBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/snaker/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/snaker/intro-scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/intro-scene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/snaker/joinroom-scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/joinroom-scene.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/CreateRoomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/IntroController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/JoinRoomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Scenes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/createroom-scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Statics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Statics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/ServerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/ServerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ControllerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/MainThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/MainThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/intro-scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/intro-scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/joinroom-scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/joinroom-scene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

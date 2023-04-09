@@ -4,13 +4,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: green;" xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: red;" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.bros.HissAndHit.GameController">
-    <Button text="Create Room" onAction="#onCreateRoom"/>
-    <TextField fx:id="playerCount" promptText="Enter Player Count"/>
-    <Label fx:id="roomCodeLabel"/>
-    <Button text="Join Room" onAction="#onJoinRoom"/>
-    <TextField fx:id="roomCode" promptText="Enter Room Code"/>
     <BorderPane fx:id="root">
         <center>
             <Label text="This is my existing scene!"/>
