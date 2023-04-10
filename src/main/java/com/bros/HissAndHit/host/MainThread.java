@@ -51,10 +51,14 @@ public class MainThread implements Runnable {
         ServerData.foodMap.remove(Converter.cantorPair(pair[0], pair[1]));
     }
 
-    private void updatePosition() {
+    private boolean updatePosition() {
+        int deadCount = 0;
+        int[] speeds = new int[ServerData.playerCount];
+        speeds[0] = 0;
         for (int i = 0; i < ServerData.playerCount; i++) {
 
             if (metaData.get(i)[MetaIndexes.IS_DEAD] > 0) {
+                deadCount++;
                 continue;
             }
 
@@ -92,35 +96,42 @@ public class MainThread implements Runnable {
 
             pos.addLast(next);
             addToPlayer(next, i);
+
+            if (ServerData.speed[i] && speeds[i]++ < 1) {
+                i--;
+            }
         }
+
+        return deadCount != ServerData.playerCount;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < ServerData.playerCount; i++) {
-            try {
-                writers.offer(new PrintWriter(sockets[i].getOutputStream(), true));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
         try {
+            for (int i = 0; i < ServerData.playerCount; i++) {
+                writers.offer(new PrintWriter(sockets[i].getOutputStream(), true));
+            }
+
             ServerData.loadBarrier.await();
-            sendAll(String.join(";", ServerData.playerNames) + "|" + String.join(";", metaData.stream().map(e -> String.valueOf(e[0])).toList()));
+            sendAll(String.join(";", ServerData.playerNames)
+                    + "|"
+                    + String.join(";", metaData.stream().map(e -> String.valueOf(e[0])).toList()));
 
             sendAll(Converter.toString(ServerData.positions));
-            ServerData.readyBarrier.await();
 
+            ServerData.readyBarrier.await();
             String data;
-            while (true) {
-                updatePosition();
+            while (updatePosition()) {
                 data = Converter.toString(ServerData.positions);
                 Thread.sleep(100);
                 cyclicBarrier.reset();
                 sendAll(data);
             }
-        } catch (InterruptedException | BrokenBarrierException e) {
+
+            for (int i = 0; i < ServerData.playerCount; i++) {
+                sockets[i].close();
+            }
+        } catch (InterruptedException | BrokenBarrierException | IOException e) {
             e.printStackTrace();
         }
     }

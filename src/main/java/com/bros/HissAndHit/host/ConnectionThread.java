@@ -1,11 +1,14 @@
 package com.bros.HissAndHit.host;
 
 import com.bros.HissAndHit.config.Statics;
+import com.bros.HissAndHit.data.ServerData;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConnectionThread implements Runnable {
     int numberOfPlayers;
@@ -17,6 +20,18 @@ public class ConnectionThread implements Runnable {
     @Override
     public void run() {
         try {
+            List<Thread> threads = new ArrayList<>();
+            List<ControllerThread> controllerThreads = new ArrayList<>();
+
+            for (int i = 0; i < ServerData.playerCount; i++) {
+                ControllerThread controllerThread = new ControllerThread(i);
+                controllerThreads.add(controllerThread);
+                threads.add(new Thread(controllerThread, "Controller Player-" + (i + 1)));
+            }
+            for (int i = 0; i < ServerData.playerCount; i++) {
+                threads.get(i).start();
+            }
+
             ServerSocket serverSocket = new ServerSocket(Statics.PORT);
             Socket[] clients = new Socket[numberOfPlayers];
 
@@ -32,8 +47,16 @@ public class ConnectionThread implements Runnable {
 
             Thread thread = new Thread(new MainThread(clients), "Boss Thread");
             thread.start();
+            thread.join();
 
-        } catch (IOException e) {
+            for (ControllerThread controllerThread : controllerThreads) {
+                controllerThread.client.close();
+            }
+
+            for (Thread th : threads) {
+                th.join();
+            }
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

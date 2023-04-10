@@ -11,6 +11,7 @@ public class Server {
     public void init() {
         ServerData.positions = new Deque[ServerData.playerCount + 2];
         ServerData.directions = new int[ServerData.playerCount];
+        ServerData.speed = new boolean[ServerData.playerCount];
         ServerData.positions[ServerData.playerCount + 1] = new LinkedList<>();
         ServerData.hashMap = new HashMap<>();
         ServerData.readyBarrier = new CyclicBarrier(ServerData.playerCount + 1);
@@ -28,6 +29,7 @@ public class Server {
             ServerData.hashMap.put(Converter.cantorPair(19, 20 + i), i);
             ServerData.hashMap.put(Converter.cantorPair(18, 20 + i), i);
             ServerData.playerNames[i] = "Player " + (i + 1);
+            ServerData.speed[i] = false;
         }
 
         ServerData.foodMap = new HashMap<>();
@@ -41,15 +43,6 @@ public class Server {
     }
 
     public void start() {
-        List<Thread> threads = new ArrayList<>();
-
-        for (int i = 1; i <= ServerData.playerCount; i++) {
-            threads.add(new Thread(new ControllerThread(i - 1), "Controller Player-" + i));
-        }
-        for (int i = 0; i < ServerData.playerCount; i++) {
-            threads.get(i).start();
-        }
-
         Thread thread = new Thread(new ConnectionThread(ServerData.playerCount), "Connect Thread");
         thread.start();
     }

@@ -1,8 +1,10 @@
 package com.bros.HissAndHit.player;
 
+import com.bros.HissAndHit.GameBoard;
 import com.bros.HissAndHit.GameController;
 import com.bros.HissAndHit.data.PlayerData;
 import com.bros.HissAndHit.utils.Converter;
+import javafx.application.Platform;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,12 +31,21 @@ public class UIThread implements Runnable {
             PlayerData.playerCount = PlayerData.playerNames.length;
             PlayerData.playerColors = Arrays.stream(data.split("\\|")[1].split(";")).map(Integer::parseInt).toList();
 
-            GameController.initScoreBoard();
+            Platform.runLater(GameController::initScoreBoard);
 
-            while (true) {
-                PlayerData.positions = Converter.fromString(reader.readLine());
-                GameController.update();
+            PlayerData.positions = Converter.fromString(reader.readLine());
+            Platform.runLater(GameController::update);
+
+            PlayerData.positions = Converter.fromString(reader.readLine());
+            Platform.runLater(GameBoard.popup::hide);
+            Platform.runLater(GameController::update);
+
+            while ((data = reader.readLine()) != null) {
+                PlayerData.positions = Converter.fromString(data);
+                Platform.runLater(GameController::update);
             }
+
+            Platform.runLater(GameBoard::setIntro);
         } catch (IOException e) {
             e.printStackTrace();
         }

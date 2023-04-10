@@ -2,6 +2,7 @@ package com.bros.HissAndHit.data;
 
 import java.net.Socket;
 import java.util.List;
+import java.util.concurrent.CyclicBarrier;
 
 public class PlayerData {
     public static int[][][] positions;
@@ -13,4 +14,5 @@ public class PlayerData {
     public static int playerCount;
     public static String[] playerNames;
     public static List<Integer> playerColors;
+    public static CyclicBarrier ScoreBoardBarrier;
 }

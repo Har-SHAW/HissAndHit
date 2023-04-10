@@ -18,6 +18,7 @@ public class ControllerThread implements Runnable {
     int playerId;
     int port;
     ServerSocket serverSocket;
+    Socket client;
     List<int[]> metaData;
 
     ControllerThread(int i) {
@@ -30,25 +31,13 @@ public class ControllerThread implements Runnable {
     public void run() {
         try {
             serverSocket = new ServerSocket(port);
-            Socket clientSocket = serverSocket.accept();
+            client = serverSocket.accept();
+            serverSocket.close();
             System.out.println(playerId + 1 + " controller connected");
-            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
-            while (true) {
-                String input = in.readLine();
-                if (input.startsWith("NAME")) {
-                    ServerData.playerNames[playerId] = input.split(":")[1];
-                    break;
-                }
-            }
-
-            while (true) {
-                String input = in.readLine();
-                if (input.startsWith("COLOR")) {
-                    metaData.get(playerId)[MetaIndexes.COLOR] = Integer.parseInt(input.split(":")[1]);
-                    break;
-                }
-            }
+            ServerData.playerNames[playerId] = in.readLine();
+            metaData.get(playerId)[MetaIndexes.COLOR] = Integer.parseInt(in.readLine());
 
             while (true) {
                 if (in.readLine().equals("LOAD")) {
@@ -64,15 +53,21 @@ public class ControllerThread implements Runnable {
                 }
             }
 
-            while (true) {
-                Integer data = Directions.data.get(in.readLine());
+            String str;
+            while ((str = in.readLine()) != null) {
+                Integer data = Directions.data.get(str);
                 if (data != null) {
                     ServerData.directions[playerId] = data;
+                } else if (str.equals("S_P")) {
+                    ServerData.speed[playerId] = true;
+                } else if (str.equals("S_R")) {
+                    ServerData.speed[playerId] = false;
                 }
             }
-
-        } catch (IOException | BrokenBarrierException | InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (BrokenBarrierException | InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            //ignore
         }
     }
 }

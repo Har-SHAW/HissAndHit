@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: red;"
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: black;"
       fx:controller="com.bros.HissAndHit.GameController">
     <HBox style="-fx-height: 50%; -fx-background-color: white;" fx:id="scoreBoard">
     </HBox>

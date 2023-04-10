@@ -31,10 +31,11 @@ public class GameController implements Initializable {
     private BorderPane root;
 
     public static void initScoreBoard() {
+        scores = new ArrayList<>();
         for (int i = 0; i < PlayerData.playerNames.length; i++) {
             VBox vBox = new VBox();
             vBox.setPrefHeight(height / 10);
-            vBox.setPrefWidth(width / 4);
+            vBox.setPrefWidth(width / PlayerData.playerNames.length);
             vBox.setStyle("-fx-background-color: #" + Integer.toHexString(PlayerData.playerColors.get(i)));
             vBox.getChildren().add(new Label("Name: " + PlayerData.playerNames[i]));
             Label label = new Label("Score: 0");
@@ -45,10 +46,19 @@ public class GameController implements Initializable {
         scoreBoardObj.requestLayout();
     }
 
+    public static void updateScoreBoard() {
+        for (int i = 0; i < PlayerData.playerCount; i++) {
+            scores.get(i).setText("Score: " + PlayerData.positions[PlayerData.playerCount + 1][i][MetaIndexes.SCORE]);
+            scores.get(i).requestLayout();
+        }
+    }
+
     public static void update() {
         int players = PlayerData.positions.length - 2;
         int food = PlayerData.positions.length - 1;
         int meta = PlayerData.positions.length;
+
+        updateScoreBoard();
 
         if (!resetNodes.isEmpty()) {
             for (int[] pair : resetNodes) {
@@ -83,6 +93,7 @@ public class GameController implements Initializable {
             for (int j = 1; j < len - 1; j++) {
                 nodes.get(playerPositions[j][0] * Statics.COL + playerPositions[j][1])
                         .setStyle(style + SnakeBody.getBody(playerPositions[j - 1], playerPositions[j], playerPositions[j + 1]));
+                resetNodes.add(playerPositions[j]);
             }
 
             nodes.get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1])
@@ -96,6 +107,8 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        matrix.getChildren().clear();
+
         for (int row = 0; row < Statics.ROW; row++) {
             for (int col = 0; col < Statics.COL; col++) {
                 Pane pane = new Pane();
@@ -109,7 +122,6 @@ public class GameController implements Initializable {
         root.setCenter(matrix);
 
         scoreBoardObj = scoreBoard;
-        scores = new ArrayList<>();
 
         GameBoard.controllerInput.println("LOAD");
     }
