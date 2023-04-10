@@ -11,4 +11,6 @@ public class ServerData {
     public static int[] directions;
     public static int playerCount;
     public static CyclicBarrier readyBarrier;
+    public static CyclicBarrier loadBarrier;
+    public static String[] playerNames;
 }

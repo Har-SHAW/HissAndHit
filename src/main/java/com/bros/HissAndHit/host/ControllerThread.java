@@ -36,8 +36,23 @@ public class ControllerThread implements Runnable {
 
             while (true) {
                 String input = in.readLine();
+                if (input.startsWith("NAME")) {
+                    ServerData.playerNames[playerId] = input.split(":")[1];
+                    break;
+                }
+            }
+
+            while (true) {
+                String input = in.readLine();
                 if (input.startsWith("COLOR")) {
                     metaData.get(playerId)[MetaIndexes.COLOR] = Integer.parseInt(input.split(":")[1]);
+                    break;
+                }
+            }
+
+            while (true) {
+                if (in.readLine().equals("LOAD")) {
+                    ServerData.loadBarrier.await();
                     break;
                 }
             }

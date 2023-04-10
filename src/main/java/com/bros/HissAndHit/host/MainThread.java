@@ -17,6 +17,9 @@ public class MainThread implements Runnable {
     Socket[] sockets;
     Random rand;
     List<int[]> metaData;
+    ConcurrentLinkedQueue<PrintWriter> writers = new ConcurrentLinkedQueue<>();
+    CyclicBarrier cyclicBarrier = new CyclicBarrier(ServerData.playerCount);
+    ExecutorService executor = Executors.newFixedThreadPool(ServerData.playerCount);
 
     MainThread(Socket[] sockets) {
         this.sockets = sockets;
@@ -83,6 +86,8 @@ public class MainThread implements Runnable {
                 int[] food = new int[]{rand.nextInt(Statics.ROW - 1), rand.nextInt(Statics.COL - 1)};
                 ServerData.positions[ServerData.playerCount].addLast(food);
                 addToFood(food, food);
+
+                metaData.get(i)[MetaIndexes.SCORE]++;
             }
 
             pos.addLast(next);
@@ -92,7 +97,6 @@ public class MainThread implements Runnable {
 
     @Override
     public void run() {
-        ConcurrentLinkedQueue<PrintWriter> writers = new ConcurrentLinkedQueue<>();
         for (int i = 0; i < ServerData.playerCount; i++) {
             try {
                 writers.offer(new PrintWriter(sockets[i].getOutputStream(), true));
@@ -101,31 +105,36 @@ public class MainThread implements Runnable {
             }
         }
 
-        ExecutorService executor = Executors.newFixedThreadPool(ServerData.playerCount);
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(ServerData.playerCount);
-
         try {
+            ServerData.loadBarrier.await();
+            sendAll(String.join(";", ServerData.playerNames) + "|" + String.join(";", metaData.stream().map(e -> String.valueOf(e[0])).toList()));
+
+            sendAll(Converter.toString(ServerData.positions));
             ServerData.readyBarrier.await();
+
+            String data;
             while (true) {
                 updatePosition();
-                String data = Converter.toString(ServerData.positions);
+                data = Converter.toString(ServerData.positions);
                 Thread.sleep(100);
                 cyclicBarrier.reset();
-                for (PrintWriter printWriter : writers) {
-                    executor.submit(() -> {
-                        try {
-                            cyclicBarrier.await();
-                            printWriter.println(data);
-                        } catch (InterruptedException | BrokenBarrierException e) {
-                            e.printStackTrace();
-                        }
-                    });
-                }
+                sendAll(data);
             }
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | BrokenBarrierException e) {
             e.printStackTrace();
-        } catch (BrokenBarrierException e) {
-            throw new RuntimeException(e);
+        }
+    }
+
+    void sendAll(String data) {
+        for (PrintWriter printWriter : writers) {
+            executor.submit(() -> {
+                try {
+                    cyclicBarrier.await();
+                    printWriter.println(data);
+                } catch (InterruptedException | BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 }

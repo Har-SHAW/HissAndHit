@@ -4,11 +4,12 @@ import com.bros.HissAndHit.config.MetaIndexes;
 import com.bros.HissAndHit.config.Statics;
 import com.bros.HissAndHit.data.PlayerData;
 import com.bros.HissAndHit.utils.SnakeBody;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
 import javafx.stage.Screen;
 
 import java.net.URL;
@@ -22,8 +23,27 @@ public class GameController implements Initializable {
     private static final List<int[]> resetNodes = new ArrayList<>();
     private static final double height = Screen.getPrimary().getBounds().getHeight();
     private static final double width = Screen.getPrimary().getBounds().getWidth();
+    private static HBox scoreBoardObj;
+    private static List<Label> scores;
+    @FXML
+    public HBox scoreBoard;
     @FXML
     private BorderPane root;
+
+    public static void initScoreBoard() {
+        for (int i = 0; i < PlayerData.playerNames.length; i++) {
+            VBox vBox = new VBox();
+            vBox.setPrefHeight(height / 10);
+            vBox.setPrefWidth(width / 4);
+            vBox.setStyle("-fx-background-color: #" + Integer.toHexString(PlayerData.playerColors.get(i)));
+            vBox.getChildren().add(new Label("Name: " + PlayerData.playerNames[i]));
+            Label label = new Label("Score: 0");
+            vBox.getChildren().add(label);
+            scores.add(label);
+            scoreBoardObj.getChildren().add(vBox);
+        }
+        scoreBoardObj.requestLayout();
+    }
 
     public static void update() {
         int players = PlayerData.positions.length - 2;
@@ -55,18 +75,17 @@ public class GameController implements Initializable {
                     .append("#").append(Integer.toHexString(PlayerData.positions[meta - 1][i][MetaIndexes.COLOR]))
                     .append(";");
 
-            matrix.getChildren()
-                    .get(playerPositions[0][0] * Statics.COL + playerPositions[0][1])
+            ObservableList<Node> nodes = matrix.getChildren();
+
+            nodes.get(playerPositions[0][0] * Statics.COL + playerPositions[0][1])
                     .setStyle(style + SnakeBody.getTail(playerPositions[1], playerPositions[0]));
 
             for (int j = 1; j < len - 1; j++) {
-                matrix.getChildren()
-                        .get(playerPositions[j][0] * Statics.COL + playerPositions[j][1])
+                nodes.get(playerPositions[j][0] * Statics.COL + playerPositions[j][1])
                         .setStyle(style + SnakeBody.getBody(playerPositions[j - 1], playerPositions[j], playerPositions[j + 1]));
             }
 
-            matrix.getChildren()
-                    .get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1])
+            nodes.get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1])
                     .setStyle(style + SnakeBody.getHead(playerPositions[len - 2], playerPositions[len - 1]));
 
             resetNodes.add(playerPositions[0]);
@@ -88,5 +107,10 @@ public class GameController implements Initializable {
 
         matrix.setStyle("-fx-background-color: #60ff52;");
         root.setCenter(matrix);
+
+        scoreBoardObj = scoreBoard;
+        scores = new ArrayList<>();
+
+        GameBoard.controllerInput.println("LOAD");
     }
 }

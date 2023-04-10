@@ -1,6 +1,7 @@
 package com.bros.HissAndHit.data;
 
 import java.net.Socket;
+import java.util.List;
 
 public class PlayerData {
     public static int[][][] positions;
@@ -9,4 +10,7 @@ public class PlayerData {
     public static String IPAddress;
     public static String roomCode;
     public static String roomIpAddress;
+    public static int playerCount;
+    public static String[] playerNames;
+    public static List<Integer> playerColors;
 }
