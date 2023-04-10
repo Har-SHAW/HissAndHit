@@ -20,6 +20,14 @@ public class Position {
         this.slowFlag = new boolean[ServerData.playerCount];
     }
 
+    private void killPlayer(int id) {
+        metaData.get(id)[MetaIndexes.IS_DEAD] = 1;
+        while (!ServerData.positions[id].isEmpty()) {
+            int[] pop = ServerData.positions[id].pop();
+            removeFromPlayer(pop);
+        }
+    }
+
     private void addToPlayer(int[] pair, int player) {
         ServerData.hashMap.put(Converter.cantorPair(pair[0], pair[1]), player);
     }
@@ -46,7 +54,6 @@ public class Position {
 
     public boolean updatePosition() {
         int deadCount = 0;
-        int[] speeds = new int[ServerData.playerCount];
         for (int i = 0; i < ServerData.playerCount; i++) {
             slowFlag[i] = !slowFlag[i];
             if (ServerData.speed[i] == -1 && slowFlag[i]) {
@@ -64,13 +71,13 @@ public class Position {
             int[] next = {last[0] + comp[0], last[1] + comp[1]};
 
             if (next[0] < 0 || next[1] < 0 || next[0] >= Statics.ROW || next[1] >= Statics.COL) {
-                metaData.get(i)[MetaIndexes.IS_DEAD] = 1;
+                killPlayer(i);
                 continue;
             }
 
             Integer echo = containsInPlayer(next);
             if (echo != null && echo != i) {
-                metaData.get(i)[MetaIndexes.IS_DEAD] = 1;
+                killPlayer(i);
                 continue;
             }
 

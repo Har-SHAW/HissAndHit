@@ -8,6 +8,10 @@ public class Converter {
         String[] dequeStrings = data.split(";");
         int[][][] dequeArray = new int[dequeStrings.length][][];
         for (int i = 0; i < dequeStrings.length; i++) {
+            if (dequeStrings[i].length() == 2) {
+                dequeArray[i] = new int[0][0];
+                continue;
+            }
             String intString = dequeStrings[i].substring(2, dequeStrings[i].length() - 2);
             String[] intStrings = intString.split("],\\[");
             int[][] deque = new int[intStrings.length][];

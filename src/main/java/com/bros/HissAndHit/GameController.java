@@ -75,9 +75,9 @@ public class GameController implements Initializable {
 
         for (int i = 0; i < players; i++) {
             if (PlayerData.positions[meta - 1][i][MetaIndexes.IS_DEAD] > 0) {
-                Collections.addAll(resetNodes, PlayerData.positions[i]);
                 continue;
             }
+
             int len = PlayerData.positions[i].length;
             int[][] playerPositions = PlayerData.positions[i];
 
@@ -93,13 +93,12 @@ public class GameController implements Initializable {
             for (int j = 1; j < len - 1; j++) {
                 nodes.get(playerPositions[j][0] * Statics.COL + playerPositions[j][1])
                         .setStyle(style + SnakeBody.getBody(playerPositions[j - 1], playerPositions[j], playerPositions[j + 1]));
-                resetNodes.add(playerPositions[j]);
             }
 
             nodes.get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1])
                     .setStyle(style + SnakeBody.getHead(playerPositions[len - 2], playerPositions[len - 1]));
 
-            resetNodes.add(playerPositions[0]);
+            Collections.addAll(resetNodes, PlayerData.positions[i]);
         }
 
         matrix.requestLayout();
