@@ -55,13 +55,11 @@ public class ControllerThread implements Runnable {
 
             String str;
             while ((str = in.readLine()) != null) {
-                Integer data = Directions.data.get(str);
-                if (data != null) {
+                Integer data;
+                if ((data = Directions.directions.get(str)) != null) {
                     ServerData.directions[playerId] = data;
-                } else if (str.equals("S_P")) {
-                    ServerData.speed[playerId] = true;
-                } else if (str.equals("S_R")) {
-                    ServerData.speed[playerId] = false;
+                } else if ((data = Directions.speed.get(str)) != null) {
+                    ServerData.speed[playerId] = data;
                 }
             }
         } catch (BrokenBarrierException | InterruptedException e) {

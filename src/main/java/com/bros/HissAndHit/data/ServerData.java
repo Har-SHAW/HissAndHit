@@ -9,7 +9,7 @@ public class ServerData {
     public static HashMap<Integer, Integer> hashMap;
     public static HashMap<Integer, int[]> foodMap;
     public static int[] directions;
-    public static boolean[] speed;
+    public static int[] speed;
     public static int playerCount;
     public static CyclicBarrier readyBarrier;
     public static CyclicBarrier loadBarrier;

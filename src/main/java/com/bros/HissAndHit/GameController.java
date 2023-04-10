@@ -23,7 +23,7 @@ public class GameController implements Initializable {
     private static final List<int[]> resetNodes = new ArrayList<>();
     private static final double height = Screen.getPrimary().getBounds().getHeight();
     private static final double width = Screen.getPrimary().getBounds().getWidth();
-    private static HBox scoreBoardObj;
+    public static HBox scoreBoardObj;
     private static List<Label> scores;
     @FXML
     public HBox scoreBoard;

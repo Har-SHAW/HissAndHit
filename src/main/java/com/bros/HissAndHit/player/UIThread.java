@@ -5,6 +5,9 @@ import com.bros.HissAndHit.GameController;
 import com.bros.HissAndHit.data.PlayerData;
 import com.bros.HissAndHit.utils.Converter;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,7 +48,19 @@ public class UIThread implements Runnable {
                 Platform.runLater(GameController::update);
             }
 
-            Platform.runLater(GameBoard::setIntro);
+            Platform.runLater(() -> {
+                GameBoard.popup.getContent().clear();
+                Button button = new Button();
+                button.setText("BACK TO HOME");
+                button.setOnAction(e -> GameBoard.popup.hide());
+                VBox vBox = new VBox();
+                vBox.setAlignment(Pos.CENTER);
+                vBox.setStyle("-fx-background-color: white;");
+                vBox.getChildren().addAll(GameController.scoreBoardObj, button);
+                GameBoard.popup.getContent().add(vBox);
+                GameBoard.popup.show(GameBoard.stage);
+                GameBoard.setIntro();
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }

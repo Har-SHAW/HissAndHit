@@ -11,7 +11,7 @@ public class Server {
     public void init() {
         ServerData.positions = new Deque[ServerData.playerCount + 2];
         ServerData.directions = new int[ServerData.playerCount];
-        ServerData.speed = new boolean[ServerData.playerCount];
+        ServerData.speed = new int[ServerData.playerCount];
         ServerData.positions[ServerData.playerCount + 1] = new LinkedList<>();
         ServerData.hashMap = new HashMap<>();
         ServerData.readyBarrier = new CyclicBarrier(ServerData.playerCount + 1);
@@ -29,7 +29,7 @@ public class Server {
             ServerData.hashMap.put(Converter.cantorPair(19, 20 + i), i);
             ServerData.hashMap.put(Converter.cantorPair(18, 20 + i), i);
             ServerData.playerNames[i] = "Player " + (i + 1);
-            ServerData.speed[i] = false;
+            ServerData.speed[i] = 0;
         }
 
         ServerData.foodMap = new HashMap<>();

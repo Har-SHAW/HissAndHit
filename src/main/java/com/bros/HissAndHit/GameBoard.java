@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -60,6 +61,7 @@ public class GameBoard extends Application {
         popupContent.setAlignment(Pos.CENTER);
         popupContent.setSpacing(30);
 
+        popup.getContent().clear();
         popup.getContent().addAll(popupContent);
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
@@ -70,8 +72,10 @@ public class GameBoard extends Application {
                     readyText.setText("READY");
                     popupText.setText("Waiting for other players.");
                     controllerInput.println("READY");
-                } else if (event.getCode().toString().equals("SPACE")) {
+                } else if (event.getCode() == KeyCode.SPACE) {
                     controllerInput.println("S_P");
+                } else if (event.getCode() == KeyCode.SHIFT) {
+                    controllerInput.println("L_P");
                 } else {
                     controllerInput.println(event.getCode().toString());
                 }
@@ -80,8 +84,10 @@ public class GameBoard extends Application {
 
         scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
             if (controllerInput != null) {
-                if (event.getCode().toString().equals("SPACE")) {
+                if (event.getCode() == KeyCode.SPACE) {
                     controllerInput.println("S_R");
+                } else if (event.getCode() == KeyCode.SHIFT) {
+                    controllerInput.println("L_R");
                 }
             }
         });
