@@ -26,22 +26,20 @@ public class GameBoard extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.CREATE_ROOM));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
 
-        stage.setTitle("Hiss and Hit");
-        stage.setScene(scene);
-        stage.show();
+        GameBoard.stage.setScene(scene);
+        GameBoard.stage.show();
     }
 
     public static void setJoinRoom() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.JOIN_ROOM));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
 
-        stage.setTitle("Hiss and Hit");
-        stage.setScene(scene);
-        stage.show();
+        GameBoard.stage.setScene(scene);
+        GameBoard.stage.show();
     }
 
     public static void setGame() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.GAME_SCENE));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
@@ -53,9 +51,7 @@ public class GameBoard extends Application {
             }
         });
 
-        GameBoard.stage.setTitle("Hiss and Hit");
         GameBoard.stage.setScene(scene);
-//        GameBoard.stage.setFullScreen(true);
         GameBoard.stage.show();
     }
 
@@ -65,10 +61,9 @@ public class GameBoard extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.INTRO));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
 
-        stage.setTitle("Hiss and Hit");
-        stage.setScene(scene);
-//        stage.setFullScreen(true);
-        stage.show();
+        GameBoard.stage.setTitle("Hiss and Hit");
+        GameBoard.stage.setScene(scene);
+        GameBoard.stage.show();
     }
 
     @Override

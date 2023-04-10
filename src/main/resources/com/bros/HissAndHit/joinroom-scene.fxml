@@ -6,17 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0"
-      xmlns:fx="http://javafx.com/fxml" fx:controller="com.bros.HissAndHit.JoinRoomController">
-   <TextField fx:id="roomCode" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Room Code"/>
-   <TextField fx:id="playerName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-              minWidth="-Infinity" promptText="Player Name"/>
-   <ColorPicker fx:id="playerColor" editable="true" promptText="Choose Color"/>
-   <Button mnemonicParsing="false" text="Join Room" fx:id="button" onAction="#joinRoom">
-      <font>
-         <Font name="Fantasque Sans Mono Bold" size="15.0"/>
-      </font>
-   </Button>
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+      spacing="20.0" fx:controller="com.bros.HissAndHit.JoinRoomController">
+    <TextField fx:id="roomCode" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Room Code"/>
+    <TextField fx:id="playerName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+               minWidth="-Infinity" promptText="Player Name"/>
+    <ColorPicker fx:id="playerColor" editable="true" promptText="Choose Color"/>
+    <Button mnemonicParsing="false" text="Join Room" fx:id="button" onAction="#joinRoom">
+        <font>
+            <Font name="Fantasque Sans Mono Bold" size="15.0"/>
+        </font>
+    </Button>
 </VBox>

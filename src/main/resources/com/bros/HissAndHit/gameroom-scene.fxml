@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: red;" xmlns:fx="http://javafx.com/fxml"
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: red;"
       fx:controller="com.bros.HissAndHit.GameController">
     <BorderPane fx:id="root">
         <center>

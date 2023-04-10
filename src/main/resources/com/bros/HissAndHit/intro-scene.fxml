@@ -3,20 +3,20 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0"
       spacing="20.0"
       style="-fx-background-image: url('https://im.indiatimes.in/media/content/2018/Aug/snake_game_1533210447.jpg'); -fx-background-size: cover"
-      xmlns:fx="http://javafx.com/fxml" fx:controller="com.bros.HissAndHit.IntroController">
-   <Button mnemonicParsing="false" text="Create Room" textAlignment="CENTER" onAction="#createRoom">
-      <font>
-         <Font name="Fantasque Sans Mono Bold" size="15.0"/>
-      </font>
-   </Button>
-   <Button mnemonicParsing="false" text="Join Room" textAlignment="CENTER" onAction="#joinRoom">
-      <font>
-         <Font name="Fantasque Sans Mono Bold" size="15.0"/>
-      </font>
-   </Button>
+      fx:controller="com.bros.HissAndHit.IntroController">
+    <Button mnemonicParsing="false" text="Create Room" textAlignment="CENTER" onAction="#createRoom">
+        <font>
+            <Font name="Fantasque Sans Mono Bold" size="15.0"/>
+        </font>
+    </Button>
+    <Button mnemonicParsing="false" text="Join Room" textAlignment="CENTER" onAction="#joinRoom">
+        <font>
+            <Font name="Fantasque Sans Mono Bold" size="15.0"/>
+        </font>
+    </Button>
 </VBox>

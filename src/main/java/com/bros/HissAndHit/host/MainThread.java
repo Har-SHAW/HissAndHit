@@ -66,18 +66,17 @@ public class MainThread implements Runnable {
             }
 
             Integer echo = containsInPlayer(next);
-            int[] foodVal = containsInFood(next);
-
-            if (echo == null && foodVal == null) {
-                int[] removed = pos.pollFirst();
-                assert removed != null;
-                removeFromPlayer(removed);
-            } else if (echo != null && echo != i) {
+            if (echo != null && echo != i) {
                 metaData.get(i)[MetaIndexes.IS_DEAD] = 1;
                 continue;
             }
 
-            if (foodVal != null) {
+            int[] foodVal = containsInFood(next);
+            if (foodVal == null) {
+                int[] removed = pos.pollFirst();
+                assert removed != null;
+                removeFromPlayer(removed);
+            } else {
                 removeFromFood(foodVal);
                 ServerData.positions[ServerData.playerCount].remove(foodVal);
 
