@@ -20,14 +20,14 @@ public class Server {
 
         for (int i = 0; i < ServerData.playerCount; i++) {
             ServerData.positions[i] = new LinkedList<>();
-            ServerData.positions[i].addLast(new int[]{20, 20 + i});
-            ServerData.positions[i].addLast(new int[]{19, 20 + i});
-            ServerData.positions[i].addLast(new int[]{18, 20 + i});
+            ServerData.positions[i].addLast(new int[]{20, 20 + i * 10});
+            ServerData.positions[i].addLast(new int[]{19, 20 + i * 10});
+            ServerData.positions[i].addLast(new int[]{18, 20 + i * 10});
             ServerData.directions[i] = 0;
             ServerData.positions[ServerData.playerCount + 1].addLast(new int[]{6357019 + i * 10, 0, 0});
-            ServerData.hashMap.put(Converter.cantorPair(20, 20 + i), i);
-            ServerData.hashMap.put(Converter.cantorPair(19, 20 + i), i);
-            ServerData.hashMap.put(Converter.cantorPair(18, 20 + i), i);
+            ServerData.hashMap.put(Converter.cantorPair(20, 20 + i * 10), i);
+            ServerData.hashMap.put(Converter.cantorPair(19, 20 + i * 10), i);
+            ServerData.hashMap.put(Converter.cantorPair(18, 20 + i * 10), i);
             ServerData.playerNames[i] = "Player " + (i + 1);
             ServerData.speed[i] = 0;
         }
