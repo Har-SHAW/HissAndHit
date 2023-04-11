@@ -36,8 +36,9 @@ public class ControllerThread implements Runnable {
             System.out.println(playerId + 1 + " controller connected");
             BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
-            ServerData.playerNames[playerId] = in.readLine();
-            metaData.get(playerId)[MetaIndexes.COLOR] = Integer.parseInt(in.readLine());
+            String[] strArr = in.readLine().split(";");
+            ServerData.playerNames[playerId] = strArr[0];
+            metaData.get(playerId)[MetaIndexes.COLOR] = Integer.parseInt(strArr[1]);
 
             while (true) {
                 if (in.readLine().equals("LOAD")) {

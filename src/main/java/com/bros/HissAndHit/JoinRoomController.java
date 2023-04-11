@@ -32,11 +32,10 @@ public class JoinRoomController implements Initializable {
     }
 
     public void joinRoom() throws IOException {
-        PlayerData.roomCode = Converter.intToIpv4(Integer.parseInt(roomCode.getText()));
+        PlayerData.roomCode = roomCode.getText();
+        PlayerData.roomIpAddress = Converter.intToIpv4(Integer.parseInt(roomCode.getText()));
         Player player = new Player();
         player.start();
-        GameBoard.controllerInput.println(playerName.getText());
-        GameBoard.controllerInput.println(Integer.parseInt(playerColor.getValue().toString().substring(2, 8), 16));
-        GameBoard.setGame();
+        GameBoard.controllerInput.println(playerName.getText() + ";" + Integer.parseInt(playerColor.getValue().toString().substring(2, 8), 16));
     }
 }

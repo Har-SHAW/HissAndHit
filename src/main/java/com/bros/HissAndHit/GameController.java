@@ -121,7 +121,5 @@ public class GameController implements Initializable {
         root.setCenter(matrix);
 
         scoreBoardObj = scoreBoard;
-
-        GameBoard.controllerInput.println("LOAD");
     }
 }

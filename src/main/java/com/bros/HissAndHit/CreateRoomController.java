@@ -4,7 +4,6 @@ import com.bros.HissAndHit.data.PlayerData;
 import com.bros.HissAndHit.data.ServerData;
 import com.bros.HissAndHit.host.Server;
 import com.bros.HissAndHit.utils.Converter;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -25,7 +24,7 @@ public class CreateRoomController implements Initializable {
     @FXML
     public Button createRoomButton;
 
-    public void createRoom(ActionEvent actionEvent) throws InterruptedException {
+    public void createRoom() throws InterruptedException {
         Server server = new Server();
         ServerData.playerCount = Integer.parseInt(playerCount.getText());
         PlayerData.roomCode = String.valueOf(Converter.ipv4ToInt(PlayerData.IPAddress));
@@ -41,7 +40,7 @@ public class CreateRoomController implements Initializable {
         joinRoomButton.setDisable(true);
     }
 
-    public void joinRoom(ActionEvent actionEvent) throws IOException {
+    public void joinRoom() throws IOException {
         GameBoard.setJoinRoom();
     }
 }

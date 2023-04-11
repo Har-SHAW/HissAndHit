@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,7 +36,7 @@ public class GameBoard extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
 
         GameBoard.stage.setScene(scene);
-        GameBoard.stage.show();
+        GameBoard.stage.setFullScreen(true);
     }
 
     public static void setJoinRoom() throws IOException {
@@ -43,12 +44,17 @@ public class GameBoard extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
 
         GameBoard.stage.setScene(scene);
-        GameBoard.stage.show();
+        GameBoard.stage.setFullScreen(true);
     }
 
-    public static void setGame() throws IOException {
+    public static void setGame() {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.GAME_SCENE));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load(), 1080, 1920);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         Text popupText = new Text("Press 'R' Key on the keyboard to get ready.");
         Text readyText = new Text("NOT READY");
@@ -93,7 +99,6 @@ public class GameBoard extends Application {
         });
 
         GameBoard.stage.setScene(scene);
-        GameBoard.stage.show();
 
         popup.show(GameBoard.stage);
     }
@@ -109,13 +114,16 @@ public class GameBoard extends Application {
 
         GameBoard.stage.setTitle("Hiss and Hit");
         GameBoard.stage.setScene(scene);
-        GameBoard.stage.show();
+        GameBoard.stage.setFullScreen(true);
     }
 
     @Override
     public void start(Stage stage) {
         GameBoard.stage = stage;
+        GameBoard.stage.setFullScreenExitHint("");
+        GameBoard.stage.initStyle(StageStyle.UTILITY);
         setIntro();
+        GameBoard.stage.show();
     }
 
     @Override
