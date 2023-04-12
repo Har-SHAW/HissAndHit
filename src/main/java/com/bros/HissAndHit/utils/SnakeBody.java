@@ -1,19 +1,20 @@
 package com.bros.HissAndHit.utils;
 
 import com.bros.HissAndHit.data.SnakeBodyData;
+import com.bros.HissAndHit.proto.Data;
 
 public class SnakeBody {
-    public static String getBody(int[] before, int[] present, int[] next) {
-        if (before[0] != next[0] && before[1] != next[1]) {
-            boolean isPresentAbove = present[0] < before[0];
-            boolean isPresentBelow = present[0] > before[0];
-            boolean isPresentLeft = present[1] < before[1];
-            boolean isPresentRight = present[1] > before[1];
+    public static String getBody(Data.Array1D before, Data.Array1D present, Data.Array1D next) {
+        if (before.getX() != next.getX() && before.getY() != next.getY()) {
+            boolean isPresentAbove = present.getX() < before.getX();
+            boolean isPresentBelow = present.getX() > before.getX();
+            boolean isPresentLeft = present.getY() < before.getY();
+            boolean isPresentRight = present.getY() > before.getY();
 
-            boolean isNextAbove = next[0] < present[0];
-            boolean isNextBelow = next[0] > present[0];
-            boolean isNextLeft = next[1] < present[1];
-            boolean isNextRight = next[1] > present[1];
+            boolean isNextAbove = next.getX() < present.getX();
+            boolean isNextBelow = next.getX() > present.getX();
+            boolean isNextLeft = next.getY() < present.getY();
+            boolean isNextRight = next.getY() > present.getY();
 
             if (isPresentAbove && isNextLeft || isPresentRight && isNextBelow) {
                 return SnakeBodyData.B_T_L;
@@ -28,24 +29,24 @@ public class SnakeBody {
         return SnakeBodyData.BODY;
     }
 
-    public static String getTail(int[] before, int[] present) {
-        if (before[0] < present[0]) {
+    public static String getTail(Data.Array1D before, Data.Array1D present) {
+        if (before.getX() < present.getX()) {
             return SnakeBodyData.TAIL_UP;
-        } else if (before[0] > present[0]) {
+        } else if (before.getX() > present.getX()) {
             return SnakeBodyData.TAIL_DOWN;
-        } else if (before[1] < present[1]) {
+        } else if (before.getY() < present.getY()) {
             return SnakeBodyData.TAIL_LEFT;
         } else {
             return SnakeBodyData.TAIL_RIGHT;
         }
     }
 
-    public static String getHead(int[] before, int[] present) {
-        if (before[0] > present[0]) {
+    public static String getHead(Data.Array1D before, Data.Array1D present) {
+        if (before.getX() > present.getX()) {
             return SnakeBodyData.HEAD_TOP;
-        } else if (before[0] < present[0]) {
+        } else if (before.getX() < present.getX()) {
             return SnakeBodyData.HEAD_BOTTOM;
-        } else if (before[1] > present[1]) {
+        } else if (before.getY() > present.getY()) {
             return SnakeBodyData.HEAD_LEFT;
         } else {
             return SnakeBodyData.HEAD_RIGHT;

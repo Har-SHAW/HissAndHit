@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package com.bros.HissAndHit.proto;
+
+// Utils
+
+message Array3D {
+  repeated Array2D array2s = 1;
+}
+
+message Array2D {
+  repeated Array1D array1s = 2;
+}
+
+message Array1D {
+  uint32 x = 1;
+  uint32 y = 2;
+}
+
+// Meta Data
+message PlayersMetaData {
+  repeated MetaData data = 1;
+}
+message MetaData {
+  bool isDead = 2;
+  uint32 killedBy = 3;
+  uint32 score = 4;
+}
+
+//Food
+message Food {
+  repeated Array1D point = 1;
+}
+
+message FinalData {
+  Array3D position = 1;
+  Food food = 2;
+  PlayersMetaData metaData = 3;
+}

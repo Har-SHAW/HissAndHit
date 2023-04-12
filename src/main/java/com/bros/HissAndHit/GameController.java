@@ -1,8 +1,8 @@
 package com.bros.HissAndHit;
 
-import com.bros.HissAndHit.config.MetaIndexes;
 import com.bros.HissAndHit.config.Statics;
 import com.bros.HissAndHit.data.PlayerData;
+import com.bros.HissAndHit.proto.Data;
 import com.bros.HissAndHit.utils.SnakeBody;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,13 +14,12 @@ import javafx.stage.Screen;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
     public static final GridPane matrix = new GridPane();
-    private static final List<int[]> resetNodes = new ArrayList<>();
+    private static final List<Data.Array1D> resetNodes = new ArrayList<>();
     private static final double height = Screen.getPrimary().getBounds().getHeight();
     private static final double width = Screen.getPrimary().getBounds().getWidth();
     public static HBox scoreBoardObj;
@@ -36,72 +35,64 @@ public class GameController implements Initializable {
             VBox vBox = new VBox();
             vBox.setPrefHeight(height / 10);
             vBox.setPrefWidth(width / PlayerData.playerNames.length);
-            vBox.setStyle("-fx-background-color: #" + Integer.toHexString(PlayerData.playerColors.get(i)));
+            vBox.setStyle("-fx-background-color: " + PlayerData.playerColors[i]);
             vBox.getChildren().add(new Label("Name: " + PlayerData.playerNames[i]));
             Label label = new Label("Score: 0");
             vBox.getChildren().add(label);
             scores.add(label);
             scoreBoardObj.getChildren().add(vBox);
         }
-        scoreBoardObj.requestLayout();
     }
 
     public static void updateScoreBoard() {
         for (int i = 0; i < PlayerData.playerCount; i++) {
-            scores.get(i).setText("Score: " + PlayerData.positions[PlayerData.playerCount + 1][i][MetaIndexes.SCORE]);
-            scores.get(i).requestLayout();
+            scores.get(i).setText("Score: " + PlayerData.metaData.getData(i).getScore());
         }
     }
 
     public static void update() {
-        int players = PlayerData.positions.length - 2;
-        int food = PlayerData.positions.length - 1;
-        int meta = PlayerData.positions.length;
-
         updateScoreBoard();
 
         if (!resetNodes.isEmpty()) {
-            for (int[] pair : resetNodes) {
-                matrix.getChildren().get(pair[0] * Statics.COL + pair[1])
+            for (Data.Array1D pair : resetNodes) {
+                matrix.getChildren().get(pair.getX() * Statics.COL + pair.getY())
                         .setStyle("-fx-background-color: #60ff52");
             }
             resetNodes.clear();
         }
 
-        for (int[] pair : PlayerData.positions[food - 1]) {
-            matrix.getChildren().get(pair[0] * Statics.COL + pair[1])
+        for (Data.Array1D array1D : PlayerData.food.getPointList()) {
+            matrix.getChildren().get(array1D.getX() * Statics.COL + array1D.getY())
                     .setStyle("-fx-background-color: green; -fx-background-radius: 50%");
         }
 
-        for (int i = 0; i < players; i++) {
-            if (PlayerData.positions[meta - 1][i][MetaIndexes.IS_DEAD] > 0) {
+        for (int i = 0; i < PlayerData.positions.getArray2SCount(); i++) {
+            if (PlayerData.metaData.getData(i).getIsDead()) {
                 continue;
             }
 
-            int len = PlayerData.positions[i].length;
-            int[][] playerPositions = PlayerData.positions[i];
+            Data.Array2D array2D = PlayerData.positions.getArray2S(i);
+            int len = array2D.getArray1SCount();
 
             StringBuilder style = new StringBuilder("-fx-background-color: ")
-                    .append("#").append(Integer.toHexString(PlayerData.positions[meta - 1][i][MetaIndexes.COLOR]))
+                    .append(PlayerData.playerColors[i])
                     .append(";");
 
             ObservableList<Node> nodes = matrix.getChildren();
 
-            nodes.get(playerPositions[0][0] * Statics.COL + playerPositions[0][1])
-                    .setStyle(style + SnakeBody.getTail(playerPositions[1], playerPositions[0]));
+            nodes.get(array2D.getArray1S(0).getX() * Statics.COL + array2D.getArray1S(0).getY())
+                    .setStyle(style + SnakeBody.getTail(array2D.getArray1S(1), array2D.getArray1S(0)));
 
             for (int j = 1; j < len - 1; j++) {
-                nodes.get(playerPositions[j][0] * Statics.COL + playerPositions[j][1])
-                        .setStyle(style + SnakeBody.getBody(playerPositions[j - 1], playerPositions[j], playerPositions[j + 1]));
+                nodes.get(array2D.getArray1S(j).getX() * Statics.COL + array2D.getArray1S(j).getY())
+                        .setStyle(style + SnakeBody.getBody(array2D.getArray1S(j - 1), array2D.getArray1S(j), array2D.getArray1S(j + 1)));
             }
 
-            nodes.get(playerPositions[len - 1][0] * Statics.COL + playerPositions[len - 1][1])
-                    .setStyle(style + SnakeBody.getHead(playerPositions[len - 2], playerPositions[len - 1]));
+            nodes.get(array2D.getArray1S(len - 1).getX() * Statics.COL + array2D.getArray1S(len - 1).getY())
+                    .setStyle(style + SnakeBody.getHead(array2D.getArray1S(len - 2), array2D.getArray1S(len - 1)));
 
-            Collections.addAll(resetNodes, PlayerData.positions[i]);
+            resetNodes.addAll(array2D.getArray1SList());
         }
-
-        matrix.requestLayout();
     }
 
     @Override

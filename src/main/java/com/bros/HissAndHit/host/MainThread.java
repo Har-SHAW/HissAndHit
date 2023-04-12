@@ -2,17 +2,21 @@ package com.bros.HissAndHit.host;
 
 import com.bros.HissAndHit.data.ServerData;
 import com.bros.HissAndHit.operations.Position;
-import com.bros.HissAndHit.utils.Converter;
+import com.bros.HissAndHit.utils.Compressor;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.*;
 
 public class MainThread implements Runnable {
     Socket[] sockets;
     Position position;
     ConcurrentLinkedQueue<PrintWriter> writers = new ConcurrentLinkedQueue<>();
+    ConcurrentLinkedQueue<OutputStream> streams = new ConcurrentLinkedQueue<>();
     CyclicBarrier cyclicBarrier = new CyclicBarrier(ServerData.playerCount);
     ExecutorService executor = Executors.newFixedThreadPool(ServerData.playerCount);
 
@@ -26,21 +30,39 @@ public class MainThread implements Runnable {
         try {
             for (int i = 0; i < ServerData.playerCount; i++) {
                 writers.offer(new PrintWriter(sockets[i].getOutputStream(), true));
+                streams.offer(sockets[i].getOutputStream());
             }
 
             ServerData.loadBarrier.await();
             sendAll(position.getNamesAndColor());
 
-            sendAll(Converter.toString(ServerData.positions));
+            byte[] bytes = Compressor.serialize(ServerData.positions);
+            sendBuff(bytes);
 
             ServerData.readyBarrier.await();
-            String data;
-            while (position.updatePosition()) {
-                data = Converter.toString(ServerData.positions);
-                Thread.sleep(100);
-                cyclicBarrier.reset();
-                sendAll(data);
-            }
+
+            Timer timer = new Timer();
+            Semaphore semaphore = new Semaphore(0);
+            timer.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        if (position.updatePosition()) {
+                            byte[] bytes = Compressor.serialize(ServerData.positions);
+                            cyclicBarrier.reset();
+                            sendBuff(bytes);
+                            return;
+                        }
+
+                        semaphore.release();
+                        cancel();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }, 0, 100);
+
+            semaphore.acquire();
 
             for (int i = 0; i < ServerData.playerCount; i++) {
                 sockets[i].close();
@@ -53,10 +75,18 @@ public class MainThread implements Runnable {
     void sendAll(String data) {
         for (PrintWriter printWriter : writers) {
             executor.submit(() -> {
+                printWriter.println(data);
+            });
+        }
+    }
+
+    void sendBuff(byte[] bytes) throws IOException {
+        for (OutputStream stream : streams) {
+            executor.submit(() -> {
                 try {
                     cyclicBarrier.await();
-                    printWriter.println(data);
-                } catch (InterruptedException | BrokenBarrierException e) {
+                    stream.write(bytes);
+                } catch (InterruptedException | BrokenBarrierException | IOException e) {
                     e.printStackTrace();
                 }
             });

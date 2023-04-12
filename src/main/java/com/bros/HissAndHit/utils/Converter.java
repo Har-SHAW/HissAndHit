@@ -1,5 +1,7 @@
 package com.bros.HissAndHit.utils;
 
+import com.bros.HissAndHit.proto.Data;
+
 import java.util.Arrays;
 import java.util.Deque;
 
@@ -39,6 +41,10 @@ public class Converter {
 
     public static int cantorPair(int x, int y) {
         return ((x + y) * (x + y + 1) / 2) + y;
+    }
+
+    public static int cantorPair(Data.Array1D data) {
+        return ((data.getX() + data.getY()) * (data.getX() + data.getY() + 1) / 2) + data.getY();
     }
 
     public static int ipv4ToInt(String ipAddress) {

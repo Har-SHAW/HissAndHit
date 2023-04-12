@@ -15,7 +15,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +24,8 @@ import java.net.UnknownHostException;
 public class GameBoard extends Application {
     public static PrintWriter controllerInput;
     public static Stage stage;
-    public static Popup popup = new Popup();
+    public static Popup popup;
+    public static Scene scene;
 
     public static void main(String[] args) {
         launch();
@@ -33,28 +33,16 @@ public class GameBoard extends Application {
 
     public static void setCreateRoom() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.CREATE_ROOM));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
-
-        GameBoard.stage.setScene(scene);
-        GameBoard.stage.setFullScreen(true);
+        stage.getScene().setRoot(fxmlLoader.load());
     }
 
     public static void setJoinRoom() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.JOIN_ROOM));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 1920);
-
-        GameBoard.stage.setScene(scene);
-        GameBoard.stage.setFullScreen(true);
+        stage.getScene().setRoot(fxmlLoader.load());
     }
 
     public static void setGame() {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.GAME_SCENE));
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1080, 1920);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         Text popupText = new Text("Press 'R' Key on the keyboard to get ready.");
         Text readyText = new Text("NOT READY");
@@ -70,7 +58,7 @@ public class GameBoard extends Application {
         popup.getContent().clear();
         popup.getContent().addAll(popupContent);
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+        GameBoard.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (controllerInput != null) {
                 if (event.getCode().toString().equals("R")) {
                     readyText.setFill(Color.GREEN);
@@ -88,7 +76,7 @@ public class GameBoard extends Application {
             }
         });
 
-        scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
+        GameBoard.scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
             if (controllerInput != null) {
                 if (event.getCode() == KeyCode.SPACE) {
                     controllerInput.println("S_R");
@@ -98,30 +86,30 @@ public class GameBoard extends Application {
             }
         });
 
-        GameBoard.stage.setScene(scene);
-
+        try {
+            stage.getScene().setRoot(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         popup.show(GameBoard.stage);
     }
 
     public static void setIntro() {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.INTRO));
-        Scene scene;
         try {
-            scene = new Scene(fxmlLoader.load(), 1080, 1920);
+            GameBoard.scene = new Scene(fxmlLoader.load(), 1920, 1080);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         GameBoard.stage.setTitle("Hiss and Hit");
-        GameBoard.stage.setScene(scene);
-        GameBoard.stage.setFullScreen(true);
+        GameBoard.stage.setScene(GameBoard.scene);
     }
 
     @Override
     public void start(Stage stage) {
+        GameBoard.popup = new Popup();
         GameBoard.stage = stage;
-        GameBoard.stage.setFullScreenExitHint("");
-        GameBoard.stage.initStyle(StageStyle.UTILITY);
         setIntro();
         GameBoard.stage.show();
     }

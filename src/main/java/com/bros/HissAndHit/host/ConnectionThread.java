@@ -43,7 +43,6 @@ public class ConnectionThread implements Runnable {
                 out.println(i);
             }
 
-            System.out.println("closed");
             serverSocket.close();
 
             Thread thread = new Thread(new MainThread(clients), "Boss Thread");
@@ -57,6 +56,7 @@ public class ConnectionThread implements Runnable {
             for (Thread th : threads) {
                 th.join();
             }
+            System.out.println("closed");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

@@ -5,8 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d71ac6a8-f961-4b01-a696-d4d1007dba3b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/proto/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/proto/data.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/proto/generate_proto.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/Compressor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/JoinRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/JoinRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Statics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Statics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/ServerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/data/ServerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ConnectionThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ConnectionThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ControllerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/MainThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/MainThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/operations/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/operations/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/UIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/UIThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/SnakeBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/SnakeBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +68,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/proto" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="GameBoard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.bros.HissAndHit.GameBoard" />
