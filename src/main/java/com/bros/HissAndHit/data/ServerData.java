@@ -10,7 +10,7 @@ public class ServerData {
     public static Deque<int[]>[] positions;
     public static Data.PlayersMetaData metaData;
     public static HashMap<Integer, Integer> hashMap;
-    public static HashMap<Integer, Data.Array1D> foodMap;
+    public static HashMap<Integer, Data.Point> foodMap;
     public static int[] directions;
     public static int[] speed;
     public static int playerCount;

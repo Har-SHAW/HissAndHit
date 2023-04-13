@@ -56,7 +56,6 @@ public class ConnectionThread implements Runnable {
             for (Thread th : threads) {
                 th.join();
             }
-            System.out.println("closed");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

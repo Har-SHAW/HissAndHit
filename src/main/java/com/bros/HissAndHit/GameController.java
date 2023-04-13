@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
     public static final GridPane matrix = new GridPane();
-    private static final List<Data.Array1D> resetNodes = new ArrayList<>();
+    private static final List<Data.Point> resetNodes = new ArrayList<>();
     private static final double height = Screen.getPrimary().getBounds().getHeight();
     private static final double width = Screen.getPrimary().getBounds().getWidth();
     public static HBox scoreBoardObj;
@@ -54,14 +54,14 @@ public class GameController implements Initializable {
         updateScoreBoard();
 
         if (!resetNodes.isEmpty()) {
-            for (Data.Array1D pair : resetNodes) {
+            for (Data.Point pair : resetNodes) {
                 matrix.getChildren().get(pair.getX() * Statics.COL + pair.getY())
                         .setStyle("-fx-background-color: #60ff52");
             }
             resetNodes.clear();
         }
 
-        for (Data.Array1D array1D : PlayerData.food.getPointList()) {
+        for (Data.Point array1D : PlayerData.food.getPointList()) {
             matrix.getChildren().get(array1D.getX() * Statics.COL + array1D.getY())
                     .setStyle("-fx-background-color: green; -fx-background-radius: 50%");
         }

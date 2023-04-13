@@ -16,7 +16,7 @@ public class Compressor {
         for (Deque<int[]> array2D : data) {
             Data.Array2D.Builder array2DBuilder = Data.Array2D.newBuilder();
             for (int[] array1D : array2D) {
-                Data.Array1D.Builder array1DBuilder = Data.Array1D.newBuilder();
+                Data.Point.Builder array1DBuilder = Data.Point.newBuilder();
                 array1DBuilder.setX(array1D[0]).setY(array1D[1]);
                 array2DBuilder.addArray1S(array1DBuilder);
             }
@@ -26,7 +26,7 @@ public class Compressor {
         Data.Array3D array3D = array3DBuilder.build();
         Data.Food.Builder foodBuilder = Data.Food.newBuilder();
 
-        for (Map.Entry<Integer, Data.Array1D> entry : ServerData.foodMap.entrySet()) {
+        for (Map.Entry<Integer, Data.Point> entry : ServerData.foodMap.entrySet()) {
             foodBuilder.addPoint(entry.getValue());
         }
 

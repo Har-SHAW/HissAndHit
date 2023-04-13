@@ -43,7 +43,7 @@ public class Server {
         Random rand = new Random();
 
         for (int i = 0; i < Statics.FOOD_SIZE; i++) {
-            Data.Array1D point = Data.Array1D.newBuilder().setX(rand.nextInt(1, Statics.ROW) - 1).setY(rand.nextInt(1, Statics.COL) - 1).build();
+            Data.Point point = Data.Point.newBuilder().setX(rand.nextInt(1, Statics.ROW) - 1).setY(rand.nextInt(1, Statics.COL) - 1).build();
             ServerData.foodMap.put(Converter.cantorPair(point), point);
         }
 

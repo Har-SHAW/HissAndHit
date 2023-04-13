@@ -4,7 +4,7 @@ import com.bros.HissAndHit.data.SnakeBodyData;
 import com.bros.HissAndHit.proto.Data;
 
 public class SnakeBody {
-    public static String getBody(Data.Array1D before, Data.Array1D present, Data.Array1D next) {
+    public static String getBody(Data.Point before, Data.Point present, Data.Point next) {
         if (before.getX() != next.getX() && before.getY() != next.getY()) {
             boolean isPresentAbove = present.getX() < before.getX();
             boolean isPresentBelow = present.getX() > before.getX();
@@ -29,7 +29,7 @@ public class SnakeBody {
         return SnakeBodyData.BODY;
     }
 
-    public static String getTail(Data.Array1D before, Data.Array1D present) {
+    public static String getTail(Data.Point before, Data.Point present) {
         if (before.getX() < present.getX()) {
             return SnakeBodyData.TAIL_UP;
         } else if (before.getX() > present.getX()) {
@@ -41,7 +41,7 @@ public class SnakeBody {
         }
     }
 
-    public static String getHead(Data.Array1D before, Data.Array1D present) {
+    public static String getHead(Data.Point before, Data.Point present) {
         if (before.getX() > present.getX()) {
             return SnakeBodyData.HEAD_TOP;
         } else if (before.getX() < present.getX()) {

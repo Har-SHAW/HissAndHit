@@ -15,10 +15,10 @@ public final class Data {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internal_static_com_bros_HissAndHit_proto_Array2D_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_com_bros_HissAndHit_proto_Array1D_descriptor;
+            internal_static_com_bros_HissAndHit_proto_Point_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_com_bros_HissAndHit_proto_Array1D_fieldAccessorTable;
+            internal_static_com_bros_HissAndHit_proto_Point_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
             internal_static_com_bros_HissAndHit_proto_PlayersMetaData_descriptor;
     private static final
@@ -46,19 +46,19 @@ public final class Data {
         java.lang.String[] descriptorData = {
                 "\n\ndata.proto\022\031com.bros.HissAndHit.proto\"" +
                         ">\n\007Array3D\0223\n\007array2s\030\001 \003(\0132\".com.bros.H" +
-                        "issAndHit.proto.Array2D\">\n\007Array2D\0223\n\007ar" +
-                        "ray1s\030\002 \003(\0132\".com.bros.HissAndHit.proto." +
-                        "Array1D\"\037\n\007Array1D\022\t\n\001x\030\001 \001(\r\022\t\n\001y\030\002 \001(\r" +
-                        "\"D\n\017PlayersMetaData\0221\n\004data\030\001 \003(\0132#.com." +
-                        "bros.HissAndHit.proto.MetaData\";\n\010MetaDa" +
-                        "ta\022\016\n\006isDead\030\002 \001(\010\022\020\n\010killedBy\030\003 \001(\r\022\r\n\005" +
-                        "score\030\004 \001(\r\"9\n\004Food\0221\n\005point\030\001 \003(\0132\".com" +
-                        ".bros.HissAndHit.proto.Array1D\"\256\001\n\tFinal" +
-                        "Data\0224\n\010position\030\001 \001(\0132\".com.bros.HissAn" +
-                        "dHit.proto.Array3D\022-\n\004food\030\002 \001(\0132\037.com.b" +
-                        "ros.HissAndHit.proto.Food\022<\n\010metaData\030\003 " +
-                        "\001(\0132*.com.bros.HissAndHit.proto.PlayersM" +
-                        "etaDatab\006proto3"
+                        "issAndHit.proto.Array2D\"<\n\007Array2D\0221\n\007ar" +
+                        "ray1s\030\002 \003(\0132 .com.bros.HissAndHit.proto." +
+                        "Point\"\035\n\005Point\022\t\n\001x\030\001 \001(\r\022\t\n\001y\030\002 \001(\r\"D\n\017" +
+                        "PlayersMetaData\0221\n\004data\030\001 \003(\0132#.com.bros" +
+                        ".HissAndHit.proto.MetaData\";\n\010MetaData\022\016" +
+                        "\n\006isDead\030\002 \001(\010\022\020\n\010killedBy\030\003 \001(\r\022\r\n\005scor" +
+                        "e\030\004 \001(\r\"7\n\004Food\022/\n\005point\030\001 \003(\0132 .com.bro" +
+                        "s.HissAndHit.proto.Point\"\256\001\n\tFinalData\0224" +
+                        "\n\010position\030\001 \001(\0132\".com.bros.HissAndHit.p" +
+                        "roto.Array3D\022-\n\004food\030\002 \001(\0132\037.com.bros.Hi" +
+                        "ssAndHit.proto.Food\022<\n\010metaData\030\003 \001(\0132*." +
+                        "com.bros.HissAndHit.proto.PlayersMetaDat" +
+                        "ab\006proto3"
         };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor
                 .internalBuildGeneratedFileFrom(descriptorData,
@@ -76,11 +76,11 @@ public final class Data {
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_com_bros_HissAndHit_proto_Array2D_descriptor,
                 new java.lang.String[]{"Array1S",});
-        internal_static_com_bros_HissAndHit_proto_Array1D_descriptor =
+        internal_static_com_bros_HissAndHit_proto_Point_descriptor =
                 getDescriptor().getMessageTypes().get(2);
-        internal_static_com_bros_HissAndHit_proto_Array1D_fieldAccessorTable = new
+        internal_static_com_bros_HissAndHit_proto_Point_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_com_bros_HissAndHit_proto_Array1D_descriptor,
+                internal_static_com_bros_HissAndHit_proto_Point_descriptor,
                 new java.lang.String[]{"X", "Y",});
         internal_static_com_bros_HissAndHit_proto_PlayersMetaData_descriptor =
                 getDescriptor().getMessageTypes().get(3);
@@ -125,7 +125,6 @@ public final class Data {
     getDescriptor() {
         return descriptor;
     }
-
     public interface Array3DOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Array3D)
             com.google.protobuf.MessageOrBuilder {
@@ -158,42 +157,40 @@ public final class Data {
         com.bros.HissAndHit.proto.Data.Array2DOrBuilder getArray2SOrBuilder(
                 int index);
     }
-
     public interface Array2DOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Array2D)
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
-        java.util.List<com.bros.HissAndHit.proto.Data.Array1D>
+        java.util.List<com.bros.HissAndHit.proto.Data.Point>
         getArray1SList();
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
-        com.bros.HissAndHit.proto.Data.Array1D getArray1S(int index);
+        com.bros.HissAndHit.proto.Data.Point getArray1S(int index);
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
         int getArray1SCount();
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
-        java.util.List<? extends com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+        java.util.List<? extends com.bros.HissAndHit.proto.Data.PointOrBuilder>
         getArray1SOrBuilderList();
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
-        com.bros.HissAndHit.proto.Data.Array1DOrBuilder getArray1SOrBuilder(
+        com.bros.HissAndHit.proto.Data.PointOrBuilder getArray1SOrBuilder(
                 int index);
     }
-
-    public interface Array1DOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Array1D)
+    public interface PointOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Point)
             com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -210,7 +207,6 @@ public final class Data {
          */
         int getY();
     }
-
     public interface PlayersMetaDataOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.PlayersMetaData)
             com.google.protobuf.MessageOrBuilder {
@@ -243,7 +239,6 @@ public final class Data {
         com.bros.HissAndHit.proto.Data.MetaDataOrBuilder getDataOrBuilder(
                 int index);
     }
-
     public interface MetaDataOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.MetaData)
             com.google.protobuf.MessageOrBuilder {
@@ -269,40 +264,38 @@ public final class Data {
          */
         int getScore();
     }
-
     public interface FoodOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Food)
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
-        java.util.List<com.bros.HissAndHit.proto.Data.Array1D>
+        java.util.List<com.bros.HissAndHit.proto.Data.Point>
         getPointList();
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
-        com.bros.HissAndHit.proto.Data.Array1D getPoint(int index);
+        com.bros.HissAndHit.proto.Data.Point getPoint(int index);
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
         int getPointCount();
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
-        java.util.List<? extends com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+        java.util.List<? extends com.bros.HissAndHit.proto.Data.PointOrBuilder>
         getPointOrBuilderList();
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
-        com.bros.HissAndHit.proto.Data.Array1DOrBuilder getPointOrBuilder(
+        com.bros.HissAndHit.proto.Data.PointOrBuilder getPointOrBuilder(
                 int index);
     }
-
     public interface FinalDataOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.FinalData)
             com.google.protobuf.MessageOrBuilder {
@@ -366,6 +359,10 @@ public final class Data {
     }
 
     /**
+     * <pre>
+     * Utils
+     * </pre>
+     * <p>
      * Protobuf type {@code com.bros.HissAndHit.proto.Array3D}
      */
     public static final class Array3D extends
@@ -405,7 +402,6 @@ public final class Data {
         @SuppressWarnings("serial")
         private java.util.List<com.bros.HissAndHit.proto.Data.Array2D> array2S_;
         private byte memoizedIsInitialized = -1;
-
         // Use Array3D.newBuilder() to construct.
         private Array3D(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -617,9 +613,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-            if (!getArray2SList()
+          if (!getArray2SList()
                     .equals(other.getArray2SList())) return false;
-            return getUnknownFields().equals(other.getUnknownFields());
+          return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -667,6 +663,10 @@ public final class Data {
         }
 
         /**
+         * <pre>
+         * Utils
+         * </pre>
+         * <p>
          * Protobuf type {@code com.bros.HissAndHit.proto.Array3D}
          */
         public static final class Builder extends
@@ -1167,9 +1167,8 @@ public final class Data {
         }
 
         @SuppressWarnings("serial")
-        private java.util.List<com.bros.HissAndHit.proto.Data.Array1D> array1S_;
+        private java.util.List<com.bros.HissAndHit.proto.Data.Point> array1S_;
         private byte memoizedIsInitialized = -1;
-
         // Use Array2D.newBuilder() to construct.
         private Array2D(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -1297,24 +1296,24 @@ public final class Data {
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
         @java.lang.Override
-        public java.util.List<com.bros.HissAndHit.proto.Data.Array1D> getArray1SList() {
+        public java.util.List<com.bros.HissAndHit.proto.Data.Point> getArray1SList() {
             return array1S_;
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
         @java.lang.Override
-        public java.util.List<? extends com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+        public java.util.List<? extends com.bros.HissAndHit.proto.Data.PointOrBuilder>
         getArray1SOrBuilderList() {
             return array1S_;
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
         @java.lang.Override
         public int getArray1SCount() {
@@ -1322,18 +1321,18 @@ public final class Data {
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
         @java.lang.Override
-        public com.bros.HissAndHit.proto.Data.Array1D getArray1S(int index) {
+        public com.bros.HissAndHit.proto.Data.Point getArray1S(int index) {
             return array1S_.get(index);
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
          */
         @java.lang.Override
-        public com.bros.HissAndHit.proto.Data.Array1DOrBuilder getArray1SOrBuilder(
+        public com.bros.HissAndHit.proto.Data.PointOrBuilder getArray1SOrBuilder(
                 int index) {
             return array1S_.get(index);
         }
@@ -1381,9 +1380,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-            if (!getArray1SList()
+          if (!getArray1SList()
                     .equals(other.getArray1SList())) return false;
-            return getUnknownFields().equals(other.getUnknownFields());
+          return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -1438,10 +1437,10 @@ public final class Data {
                 // @@protoc_insertion_point(builder_implements:com.bros.HissAndHit.proto.Array2D)
                 com.bros.HissAndHit.proto.Data.Array2DOrBuilder {
             private int bitField0_;
-            private java.util.List<com.bros.HissAndHit.proto.Data.Array1D> array1S_ =
+            private java.util.List<com.bros.HissAndHit.proto.Data.Point> array1S_ =
                     java.util.Collections.emptyList();
             private com.google.protobuf.RepeatedFieldBuilderV3<
-                    com.bros.HissAndHit.proto.Data.Array1D, com.bros.HissAndHit.proto.Data.Array1D.Builder, com.bros.HissAndHit.proto.Data.Array1DOrBuilder> array1SBuilder_;
+                    com.bros.HissAndHit.proto.Data.Point, com.bros.HissAndHit.proto.Data.Point.Builder, com.bros.HissAndHit.proto.Data.PointOrBuilder> array1SBuilder_;
 
             // Construct using com.bros.HissAndHit.proto.Data.Array2D.newBuilder()
             private Builder() {
@@ -1593,9 +1592,9 @@ public final class Data {
                                 done = true;
                                 break;
                             case 18: {
-                                com.bros.HissAndHit.proto.Data.Array1D m =
+                                com.bros.HissAndHit.proto.Data.Point m =
                                         input.readMessage(
-                                                com.bros.HissAndHit.proto.Data.Array1D.parser(),
+                                                com.bros.HissAndHit.proto.Data.Point.parser(),
                                                 extensionRegistry);
                                 if (array1SBuilder_ == null) {
                                     ensureArray1SIsMutable();
@@ -1623,15 +1622,15 @@ public final class Data {
 
             private void ensureArray1SIsMutable() {
                 if ((bitField0_ & 0x00000001) == 0) {
-                    array1S_ = new java.util.ArrayList<com.bros.HissAndHit.proto.Data.Array1D>(array1S_);
+                    array1S_ = new java.util.ArrayList<com.bros.HissAndHit.proto.Data.Point>(array1S_);
                     bitField0_ |= 0x00000001;
                 }
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public java.util.List<com.bros.HissAndHit.proto.Data.Array1D> getArray1SList() {
+            public java.util.List<com.bros.HissAndHit.proto.Data.Point> getArray1SList() {
                 if (array1SBuilder_ == null) {
                     return java.util.Collections.unmodifiableList(array1S_);
                 } else {
@@ -1640,7 +1639,7 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public int getArray1SCount() {
                 if (array1SBuilder_ == null) {
@@ -1651,9 +1650,9 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D getArray1S(int index) {
+            public com.bros.HissAndHit.proto.Data.Point getArray1S(int index) {
                 if (array1SBuilder_ == null) {
                     return array1S_.get(index);
                 } else {
@@ -1662,10 +1661,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder setArray1S(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D value) {
+                    int index, com.bros.HissAndHit.proto.Data.Point value) {
                 if (array1SBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
@@ -1680,10 +1679,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder setArray1S(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D.Builder builderForValue) {
+                    int index, com.bros.HissAndHit.proto.Data.Point.Builder builderForValue) {
                 if (array1SBuilder_ == null) {
                     ensureArray1SIsMutable();
                     array1S_.set(index, builderForValue.build());
@@ -1695,9 +1694,9 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public Builder addArray1S(com.bros.HissAndHit.proto.Data.Array1D value) {
+            public Builder addArray1S(com.bros.HissAndHit.proto.Data.Point value) {
                 if (array1SBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
@@ -1712,10 +1711,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder addArray1S(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D value) {
+                    int index, com.bros.HissAndHit.proto.Data.Point value) {
                 if (array1SBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
@@ -1730,10 +1729,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder addArray1S(
-                    com.bros.HissAndHit.proto.Data.Array1D.Builder builderForValue) {
+                    com.bros.HissAndHit.proto.Data.Point.Builder builderForValue) {
                 if (array1SBuilder_ == null) {
                     ensureArray1SIsMutable();
                     array1S_.add(builderForValue.build());
@@ -1745,10 +1744,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder addArray1S(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D.Builder builderForValue) {
+                    int index, com.bros.HissAndHit.proto.Data.Point.Builder builderForValue) {
                 if (array1SBuilder_ == null) {
                     ensureArray1SIsMutable();
                     array1S_.add(index, builderForValue.build());
@@ -1760,10 +1759,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder addAllArray1S(
-                    java.lang.Iterable<? extends com.bros.HissAndHit.proto.Data.Array1D> values) {
+                    java.lang.Iterable<? extends com.bros.HissAndHit.proto.Data.Point> values) {
                 if (array1SBuilder_ == null) {
                     ensureArray1SIsMutable();
                     com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1776,7 +1775,7 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder clearArray1S() {
                 if (array1SBuilder_ == null) {
@@ -1790,7 +1789,7 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
             public Builder removeArray1S(int index) {
                 if (array1SBuilder_ == null) {
@@ -1804,17 +1803,17 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D.Builder getArray1SBuilder(
+            public com.bros.HissAndHit.proto.Data.Point.Builder getArray1SBuilder(
                     int index) {
                 return getArray1SFieldBuilder().getBuilder(index);
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1DOrBuilder getArray1SOrBuilder(
+            public com.bros.HissAndHit.proto.Data.PointOrBuilder getArray1SOrBuilder(
                     int index) {
                 if (array1SBuilder_ == null) {
                     return array1S_.get(index);
@@ -1824,9 +1823,9 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public java.util.List<? extends com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+            public java.util.List<? extends com.bros.HissAndHit.proto.Data.PointOrBuilder>
             getArray1SOrBuilderList() {
                 if (array1SBuilder_ != null) {
                     return array1SBuilder_.getMessageOrBuilderList();
@@ -1836,36 +1835,36 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D.Builder addArray1SBuilder() {
+            public com.bros.HissAndHit.proto.Data.Point.Builder addArray1SBuilder() {
                 return getArray1SFieldBuilder().addBuilder(
-                        com.bros.HissAndHit.proto.Data.Array1D.getDefaultInstance());
+                        com.bros.HissAndHit.proto.Data.Point.getDefaultInstance());
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D.Builder addArray1SBuilder(
+            public com.bros.HissAndHit.proto.Data.Point.Builder addArray1SBuilder(
                     int index) {
                 return getArray1SFieldBuilder().addBuilder(
-                        index, com.bros.HissAndHit.proto.Data.Array1D.getDefaultInstance());
+                        index, com.bros.HissAndHit.proto.Data.Point.getDefaultInstance());
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D array1s = 2;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point array1s = 2;</code>
              */
-            public java.util.List<com.bros.HissAndHit.proto.Data.Array1D.Builder>
+            public java.util.List<com.bros.HissAndHit.proto.Data.Point.Builder>
             getArray1SBuilderList() {
                 return getArray1SFieldBuilder().getBuilderList();
             }
 
             private com.google.protobuf.RepeatedFieldBuilderV3<
-                    com.bros.HissAndHit.proto.Data.Array1D, com.bros.HissAndHit.proto.Data.Array1D.Builder, com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+                    com.bros.HissAndHit.proto.Data.Point, com.bros.HissAndHit.proto.Data.Point.Builder, com.bros.HissAndHit.proto.Data.PointOrBuilder>
             getArray1SFieldBuilder() {
                 if (array1SBuilder_ == null) {
                     array1SBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                            com.bros.HissAndHit.proto.Data.Array1D, com.bros.HissAndHit.proto.Data.Array1D.Builder, com.bros.HissAndHit.proto.Data.Array1DOrBuilder>(
+                            com.bros.HissAndHit.proto.Data.Point, com.bros.HissAndHit.proto.Data.Point.Builder, com.bros.HissAndHit.proto.Data.PointOrBuilder>(
                             array1S_,
                             ((bitField0_ & 0x00000001) != 0),
                             getParentForChildren(),
@@ -1894,21 +1893,21 @@ public final class Data {
     }
 
     /**
-     * Protobuf type {@code com.bros.HissAndHit.proto.Array1D}
+     * Protobuf type {@code com.bros.HissAndHit.proto.Point}
      */
-    public static final class Array1D extends
+    public static final class Point extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:com.bros.HissAndHit.proto.Array1D)
-            Array1DOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.bros.HissAndHit.proto.Point)
+            PointOrBuilder {
         public static final int X_FIELD_NUMBER = 1;
         public static final int Y_FIELD_NUMBER = 2;
         private static final long serialVersionUID = 0L;
-        // @@protoc_insertion_point(class_scope:com.bros.HissAndHit.proto.Array1D)
-        private static final com.bros.HissAndHit.proto.Data.Array1D DEFAULT_INSTANCE;
-        private static final com.google.protobuf.Parser<Array1D>
-                PARSER = new com.google.protobuf.AbstractParser<Array1D>() {
+        // @@protoc_insertion_point(class_scope:com.bros.HissAndHit.proto.Point)
+        private static final com.bros.HissAndHit.proto.Data.Point DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<Point>
+                PARSER = new com.google.protobuf.AbstractParser<Point>() {
             @java.lang.Override
-            public Array1D parsePartialFrom(
+            public Point parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1928,71 +1927,70 @@ public final class Data {
         };
 
         static {
-            DEFAULT_INSTANCE = new com.bros.HissAndHit.proto.Data.Array1D();
+            DEFAULT_INSTANCE = new com.bros.HissAndHit.proto.Data.Point();
         }
 
         private int x_ = 0;
         private int y_ = 0;
         private byte memoizedIsInitialized = -1;
 
-        // Use Array1D.newBuilder() to construct.
-        private Array1D(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use Point.newBuilder() to construct.
+        private Point(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-
-        private Array1D() {
+        private Point() {
         }
 
         public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Array1D_descriptor;
+            return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Point_descriptor;
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(byte[] data)
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(java.io.InputStream input)
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -2000,13 +1998,13 @@ public final class Data {
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseDelimitedFrom(java.io.InputStream input)
+        public static com.bros.HissAndHit.proto.Data.Point parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseDelimitedFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -2014,14 +2012,14 @@ public final class Data {
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D parseFrom(
+        public static com.bros.HissAndHit.proto.Data.Point parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -2033,15 +2031,15 @@ public final class Data {
             return DEFAULT_INSTANCE.toBuilder();
         }
 
-        public static Builder newBuilder(com.bros.HissAndHit.proto.Data.Array1D prototype) {
+        public static Builder newBuilder(com.bros.HissAndHit.proto.Data.Point prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
 
-        public static com.bros.HissAndHit.proto.Data.Array1D getDefaultInstance() {
+        public static com.bros.HissAndHit.proto.Data.Point getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        public static com.google.protobuf.Parser<Array1D> parser() {
+        public static com.google.protobuf.Parser<Point> parser() {
             return PARSER;
         }
 
@@ -2049,15 +2047,15 @@ public final class Data {
         @SuppressWarnings({"unused"})
         protected java.lang.Object newInstance(
                 UnusedPrivateParameter unused) {
-            return new Array1D();
+            return new Point();
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Array1D_fieldAccessorTable
+            return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Point_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            com.bros.HissAndHit.proto.Data.Array1D.class, com.bros.HissAndHit.proto.Data.Array1D.Builder.class);
+                            com.bros.HissAndHit.proto.Data.Point.class, com.bros.HissAndHit.proto.Data.Point.Builder.class);
         }
 
         /**
@@ -2126,15 +2124,15 @@ public final class Data {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof Array1D other)) {
+            if (!(obj instanceof Point other)) {
                 return super.equals(obj);
             }
 
-            if (getX()
+          if (getX()
                     != other.getX()) return false;
             if (getY()
                     != other.getY()) return false;
-            return getUnknownFields().equals(other.getUnknownFields());
+          return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -2172,27 +2170,27 @@ public final class Data {
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<Array1D> getParserForType() {
+        public com.google.protobuf.Parser<Point> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.bros.HissAndHit.proto.Data.Array1D getDefaultInstanceForType() {
+        public com.bros.HissAndHit.proto.Data.Point getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
         /**
-         * Protobuf type {@code com.bros.HissAndHit.proto.Array1D}
+         * Protobuf type {@code com.bros.HissAndHit.proto.Point}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:com.bros.HissAndHit.proto.Array1D)
-                com.bros.HissAndHit.proto.Data.Array1DOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.bros.HissAndHit.proto.Point)
+                com.bros.HissAndHit.proto.Data.PointOrBuilder {
             private int bitField0_;
             private int x_;
             private int y_;
 
-            // Construct using com.bros.HissAndHit.proto.Data.Array1D.newBuilder()
+            // Construct using com.bros.HissAndHit.proto.Data.Point.newBuilder()
             private Builder() {
 
             }
@@ -2205,15 +2203,15 @@ public final class Data {
 
             public static com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Array1D_descriptor;
+                return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Point_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Array1D_fieldAccessorTable
+                return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Point_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                com.bros.HissAndHit.proto.Data.Array1D.class, com.bros.HissAndHit.proto.Data.Array1D.Builder.class);
+                                com.bros.HissAndHit.proto.Data.Point.class, com.bros.HissAndHit.proto.Data.Point.Builder.class);
             }
 
             @java.lang.Override
@@ -2228,17 +2226,17 @@ public final class Data {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Array1D_descriptor;
+                return com.bros.HissAndHit.proto.Data.internal_static_com_bros_HissAndHit_proto_Point_descriptor;
             }
 
             @java.lang.Override
-            public com.bros.HissAndHit.proto.Data.Array1D getDefaultInstanceForType() {
-                return com.bros.HissAndHit.proto.Data.Array1D.getDefaultInstance();
+            public com.bros.HissAndHit.proto.Data.Point getDefaultInstanceForType() {
+                return com.bros.HissAndHit.proto.Data.Point.getDefaultInstance();
             }
 
             @java.lang.Override
-            public com.bros.HissAndHit.proto.Data.Array1D build() {
-                com.bros.HissAndHit.proto.Data.Array1D result = buildPartial();
+            public com.bros.HissAndHit.proto.Data.Point build() {
+                com.bros.HissAndHit.proto.Data.Point result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -2246,8 +2244,8 @@ public final class Data {
             }
 
             @java.lang.Override
-            public com.bros.HissAndHit.proto.Data.Array1D buildPartial() {
-                com.bros.HissAndHit.proto.Data.Array1D result = new com.bros.HissAndHit.proto.Data.Array1D(this);
+            public com.bros.HissAndHit.proto.Data.Point buildPartial() {
+                com.bros.HissAndHit.proto.Data.Point result = new com.bros.HissAndHit.proto.Data.Point(this);
                 if (bitField0_ != 0) {
                     buildPartial0(result);
                 }
@@ -2255,7 +2253,7 @@ public final class Data {
                 return result;
             }
 
-            private void buildPartial0(com.bros.HissAndHit.proto.Data.Array1D result) {
+            private void buildPartial0(com.bros.HissAndHit.proto.Data.Point result) {
                 int from_bitField0_ = bitField0_;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
                     result.x_ = x_;
@@ -2267,16 +2265,16 @@ public final class Data {
 
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof com.bros.HissAndHit.proto.Data.Array1D) {
-                    return mergeFrom((com.bros.HissAndHit.proto.Data.Array1D) other);
+                if (other instanceof com.bros.HissAndHit.proto.Data.Point) {
+                    return mergeFrom((com.bros.HissAndHit.proto.Data.Point) other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(com.bros.HissAndHit.proto.Data.Array1D other) {
-                if (other == com.bros.HissAndHit.proto.Data.Array1D.getDefaultInstance()) return this;
+            public Builder mergeFrom(com.bros.HissAndHit.proto.Data.Point other) {
+                if (other == com.bros.HissAndHit.proto.Data.Point.getDefaultInstance()) return this;
                 if (other.getX() != 0) {
                     setX(other.getX());
                 }
@@ -2420,7 +2418,7 @@ public final class Data {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:com.bros.HissAndHit.proto.Array1D)
+            // @@protoc_insertion_point(builder_scope:com.bros.HissAndHit.proto.Point)
         }
 
     }
@@ -2469,7 +2467,6 @@ public final class Data {
         @SuppressWarnings("serial")
         private java.util.List<com.bros.HissAndHit.proto.Data.MetaData> data_;
         private byte memoizedIsInitialized = -1;
-
         // Use PlayersMetaData.newBuilder() to construct.
         private PlayersMetaData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -2681,9 +2678,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-            if (!getDataList()
+          if (!getDataList()
                     .equals(other.getDataList())) return false;
-            return getUnknownFields().equals(other.getUnknownFields());
+          return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -3453,13 +3450,13 @@ public final class Data {
                 return super.equals(obj);
             }
 
-            if (getIsDead()
+          if (getIsDead()
                     != other.getIsDead()) return false;
             if (getKilledBy()
                     != other.getKilledBy()) return false;
             if (getScore()
                     != other.getScore()) return false;
-            return getUnknownFields().equals(other.getUnknownFields());
+          return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -3844,9 +3841,8 @@ public final class Data {
         }
 
         @SuppressWarnings("serial")
-        private java.util.List<com.bros.HissAndHit.proto.Data.Array1D> point_;
+        private java.util.List<com.bros.HissAndHit.proto.Data.Point> point_;
         private byte memoizedIsInitialized = -1;
-
         // Use Food.newBuilder() to construct.
         private Food(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -3974,24 +3970,24 @@ public final class Data {
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
         @java.lang.Override
-        public java.util.List<com.bros.HissAndHit.proto.Data.Array1D> getPointList() {
+        public java.util.List<com.bros.HissAndHit.proto.Data.Point> getPointList() {
             return point_;
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
         @java.lang.Override
-        public java.util.List<? extends com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+        public java.util.List<? extends com.bros.HissAndHit.proto.Data.PointOrBuilder>
         getPointOrBuilderList() {
             return point_;
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
         @java.lang.Override
         public int getPointCount() {
@@ -3999,18 +3995,18 @@ public final class Data {
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
         @java.lang.Override
-        public com.bros.HissAndHit.proto.Data.Array1D getPoint(int index) {
+        public com.bros.HissAndHit.proto.Data.Point getPoint(int index) {
             return point_.get(index);
         }
 
         /**
-         * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+         * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
          */
         @java.lang.Override
-        public com.bros.HissAndHit.proto.Data.Array1DOrBuilder getPointOrBuilder(
+        public com.bros.HissAndHit.proto.Data.PointOrBuilder getPointOrBuilder(
                 int index) {
             return point_.get(index);
         }
@@ -4058,9 +4054,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-            if (!getPointList()
+          if (!getPointList()
                     .equals(other.getPointList())) return false;
-            return getUnknownFields().equals(other.getUnknownFields());
+          return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -4119,10 +4115,10 @@ public final class Data {
                 // @@protoc_insertion_point(builder_implements:com.bros.HissAndHit.proto.Food)
                 com.bros.HissAndHit.proto.Data.FoodOrBuilder {
             private int bitField0_;
-            private java.util.List<com.bros.HissAndHit.proto.Data.Array1D> point_ =
+            private java.util.List<com.bros.HissAndHit.proto.Data.Point> point_ =
                     java.util.Collections.emptyList();
             private com.google.protobuf.RepeatedFieldBuilderV3<
-                    com.bros.HissAndHit.proto.Data.Array1D, com.bros.HissAndHit.proto.Data.Array1D.Builder, com.bros.HissAndHit.proto.Data.Array1DOrBuilder> pointBuilder_;
+                    com.bros.HissAndHit.proto.Data.Point, com.bros.HissAndHit.proto.Data.Point.Builder, com.bros.HissAndHit.proto.Data.PointOrBuilder> pointBuilder_;
 
             // Construct using com.bros.HissAndHit.proto.Data.Food.newBuilder()
             private Builder() {
@@ -4274,9 +4270,9 @@ public final class Data {
                                 done = true;
                                 break;
                             case 10: {
-                                com.bros.HissAndHit.proto.Data.Array1D m =
+                                com.bros.HissAndHit.proto.Data.Point m =
                                         input.readMessage(
-                                                com.bros.HissAndHit.proto.Data.Array1D.parser(),
+                                                com.bros.HissAndHit.proto.Data.Point.parser(),
                                                 extensionRegistry);
                                 if (pointBuilder_ == null) {
                                     ensurePointIsMutable();
@@ -4304,15 +4300,15 @@ public final class Data {
 
             private void ensurePointIsMutable() {
                 if ((bitField0_ & 0x00000001) == 0) {
-                    point_ = new java.util.ArrayList<com.bros.HissAndHit.proto.Data.Array1D>(point_);
+                    point_ = new java.util.ArrayList<com.bros.HissAndHit.proto.Data.Point>(point_);
                     bitField0_ |= 0x00000001;
                 }
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public java.util.List<com.bros.HissAndHit.proto.Data.Array1D> getPointList() {
+            public java.util.List<com.bros.HissAndHit.proto.Data.Point> getPointList() {
                 if (pointBuilder_ == null) {
                     return java.util.Collections.unmodifiableList(point_);
                 } else {
@@ -4321,7 +4317,7 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public int getPointCount() {
                 if (pointBuilder_ == null) {
@@ -4332,9 +4328,9 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D getPoint(int index) {
+            public com.bros.HissAndHit.proto.Data.Point getPoint(int index) {
                 if (pointBuilder_ == null) {
                     return point_.get(index);
                 } else {
@@ -4343,10 +4339,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder setPoint(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D value) {
+                    int index, com.bros.HissAndHit.proto.Data.Point value) {
                 if (pointBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
@@ -4361,10 +4357,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder setPoint(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D.Builder builderForValue) {
+                    int index, com.bros.HissAndHit.proto.Data.Point.Builder builderForValue) {
                 if (pointBuilder_ == null) {
                     ensurePointIsMutable();
                     point_.set(index, builderForValue.build());
@@ -4376,9 +4372,9 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public Builder addPoint(com.bros.HissAndHit.proto.Data.Array1D value) {
+            public Builder addPoint(com.bros.HissAndHit.proto.Data.Point value) {
                 if (pointBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
@@ -4393,10 +4389,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder addPoint(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D value) {
+                    int index, com.bros.HissAndHit.proto.Data.Point value) {
                 if (pointBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
@@ -4411,10 +4407,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder addPoint(
-                    com.bros.HissAndHit.proto.Data.Array1D.Builder builderForValue) {
+                    com.bros.HissAndHit.proto.Data.Point.Builder builderForValue) {
                 if (pointBuilder_ == null) {
                     ensurePointIsMutable();
                     point_.add(builderForValue.build());
@@ -4426,10 +4422,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder addPoint(
-                    int index, com.bros.HissAndHit.proto.Data.Array1D.Builder builderForValue) {
+                    int index, com.bros.HissAndHit.proto.Data.Point.Builder builderForValue) {
                 if (pointBuilder_ == null) {
                     ensurePointIsMutable();
                     point_.add(index, builderForValue.build());
@@ -4441,10 +4437,10 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder addAllPoint(
-                    java.lang.Iterable<? extends com.bros.HissAndHit.proto.Data.Array1D> values) {
+                    java.lang.Iterable<? extends com.bros.HissAndHit.proto.Data.Point> values) {
                 if (pointBuilder_ == null) {
                     ensurePointIsMutable();
                     com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -4457,7 +4453,7 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder clearPoint() {
                 if (pointBuilder_ == null) {
@@ -4471,7 +4467,7 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
             public Builder removePoint(int index) {
                 if (pointBuilder_ == null) {
@@ -4485,17 +4481,17 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D.Builder getPointBuilder(
+            public com.bros.HissAndHit.proto.Data.Point.Builder getPointBuilder(
                     int index) {
                 return getPointFieldBuilder().getBuilder(index);
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1DOrBuilder getPointOrBuilder(
+            public com.bros.HissAndHit.proto.Data.PointOrBuilder getPointOrBuilder(
                     int index) {
                 if (pointBuilder_ == null) {
                     return point_.get(index);
@@ -4505,9 +4501,9 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public java.util.List<? extends com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+            public java.util.List<? extends com.bros.HissAndHit.proto.Data.PointOrBuilder>
             getPointOrBuilderList() {
                 if (pointBuilder_ != null) {
                     return pointBuilder_.getMessageOrBuilderList();
@@ -4517,36 +4513,36 @@ public final class Data {
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D.Builder addPointBuilder() {
+            public com.bros.HissAndHit.proto.Data.Point.Builder addPointBuilder() {
                 return getPointFieldBuilder().addBuilder(
-                        com.bros.HissAndHit.proto.Data.Array1D.getDefaultInstance());
+                        com.bros.HissAndHit.proto.Data.Point.getDefaultInstance());
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public com.bros.HissAndHit.proto.Data.Array1D.Builder addPointBuilder(
+            public com.bros.HissAndHit.proto.Data.Point.Builder addPointBuilder(
                     int index) {
                 return getPointFieldBuilder().addBuilder(
-                        index, com.bros.HissAndHit.proto.Data.Array1D.getDefaultInstance());
+                        index, com.bros.HissAndHit.proto.Data.Point.getDefaultInstance());
             }
 
             /**
-             * <code>repeated .com.bros.HissAndHit.proto.Array1D point = 1;</code>
+             * <code>repeated .com.bros.HissAndHit.proto.Point point = 1;</code>
              */
-            public java.util.List<com.bros.HissAndHit.proto.Data.Array1D.Builder>
+            public java.util.List<com.bros.HissAndHit.proto.Data.Point.Builder>
             getPointBuilderList() {
                 return getPointFieldBuilder().getBuilderList();
             }
 
             private com.google.protobuf.RepeatedFieldBuilderV3<
-                    com.bros.HissAndHit.proto.Data.Array1D, com.bros.HissAndHit.proto.Data.Array1D.Builder, com.bros.HissAndHit.proto.Data.Array1DOrBuilder>
+                    com.bros.HissAndHit.proto.Data.Point, com.bros.HissAndHit.proto.Data.Point.Builder, com.bros.HissAndHit.proto.Data.PointOrBuilder>
             getPointFieldBuilder() {
                 if (pointBuilder_ == null) {
                     pointBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                            com.bros.HissAndHit.proto.Data.Array1D, com.bros.HissAndHit.proto.Data.Array1D.Builder, com.bros.HissAndHit.proto.Data.Array1DOrBuilder>(
+                            com.bros.HissAndHit.proto.Data.Point, com.bros.HissAndHit.proto.Data.Point.Builder, com.bros.HissAndHit.proto.Data.PointOrBuilder>(
                             point_,
                             ((bitField0_ & 0x00000001) != 0),
                             getParentForChildren(),
@@ -4622,7 +4618,6 @@ public final class Data {
         private FinalData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-
         private FinalData() {
         }
 
@@ -4884,7 +4879,7 @@ public final class Data {
                 return super.equals(obj);
             }
 
-            if (hasPosition() != other.hasPosition()) return false;
+          if (hasPosition() != other.hasPosition()) return false;
             if (hasPosition()) {
                 if (!getPosition()
                         .equals(other.getPosition())) return false;
@@ -4899,7 +4894,7 @@ public final class Data {
                 if (!getMetaData()
                         .equals(other.getMetaData())) return false;
             }
-            return getUnknownFields().equals(other.getUnknownFields());
+          return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override

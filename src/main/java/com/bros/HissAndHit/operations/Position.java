@@ -41,15 +41,15 @@ public class Position {
         return ServerData.hashMap.get(Converter.cantorPair(pair[0], pair[1]));
     }
 
-    private Data.Array1D containsInFood(int[] pair) {
+    private Data.Point containsInFood(int[] pair) {
         return ServerData.foodMap.get(Converter.cantorPair(pair[0], pair[1]));
     }
 
-    private void addToFood(Data.Array1D food) {
+    private void addToFood(Data.Point food) {
         ServerData.foodMap.put(Converter.cantorPair(food), food);
     }
 
-    private void removeFromFood(Data.Array1D pair) {
+    private void removeFromFood(Data.Point pair) {
         ServerData.foodMap.remove(Converter.cantorPair(pair));
     }
 
@@ -82,14 +82,14 @@ public class Position {
                 continue;
             }
 
-            Data.Array1D foodVal = containsInFood(next);
+            Data.Point foodVal = containsInFood(next);
             if (foodVal == null) {
                 int[] removed = pos.pollFirst();
                 assert removed != null;
                 removeFromPlayer(removed);
             } else {
                 removeFromFood(foodVal);
-                Data.Array1D point = Data.Array1D.newBuilder()
+                Data.Point point = Data.Point.newBuilder()
                         .setX(rand.nextInt(Statics.ROW - 1))
                         .setY(rand.nextInt(Statics.COL - 1)).build();
                 addToFood(point);
