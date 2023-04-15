@@ -3,6 +3,7 @@ package com.bros.HissAndHit.player;
 import com.bros.HissAndHit.GameBoard;
 import com.bros.HissAndHit.GameController;
 import com.bros.HissAndHit.data.PlayerData;
+import com.bros.HissAndHit.scenes.GameScene;
 import com.bros.HissAndHit.utils.Compressor;
 import com.bros.HissAndHit.utils.PopUps;
 import javafx.application.Platform;
@@ -36,7 +37,7 @@ public class UIThread implements Runnable {
 
             Platform.runLater(() -> {
                 GameBoard.popup.hide();
-                GameBoard.setGame();
+                GameScene.setGame();
                 GameController.initScoreBoard();
             });
 

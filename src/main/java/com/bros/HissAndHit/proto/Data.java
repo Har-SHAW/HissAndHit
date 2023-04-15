@@ -125,6 +125,7 @@ public final class Data {
     getDescriptor() {
         return descriptor;
     }
+
     public interface Array3DOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Array3D)
             com.google.protobuf.MessageOrBuilder {
@@ -157,6 +158,7 @@ public final class Data {
         com.bros.HissAndHit.proto.Data.Array2DOrBuilder getArray2SOrBuilder(
                 int index);
     }
+
     public interface Array2DOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Array2D)
             com.google.protobuf.MessageOrBuilder {
@@ -189,6 +191,7 @@ public final class Data {
         com.bros.HissAndHit.proto.Data.PointOrBuilder getArray1SOrBuilder(
                 int index);
     }
+
     public interface PointOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Point)
             com.google.protobuf.MessageOrBuilder {
@@ -207,6 +210,7 @@ public final class Data {
          */
         int getY();
     }
+
     public interface PlayersMetaDataOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.PlayersMetaData)
             com.google.protobuf.MessageOrBuilder {
@@ -239,6 +243,7 @@ public final class Data {
         com.bros.HissAndHit.proto.Data.MetaDataOrBuilder getDataOrBuilder(
                 int index);
     }
+
     public interface MetaDataOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.MetaData)
             com.google.protobuf.MessageOrBuilder {
@@ -264,6 +269,7 @@ public final class Data {
          */
         int getScore();
     }
+
     public interface FoodOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.Food)
             com.google.protobuf.MessageOrBuilder {
@@ -296,6 +302,7 @@ public final class Data {
         com.bros.HissAndHit.proto.Data.PointOrBuilder getPointOrBuilder(
                 int index);
     }
+
     public interface FinalDataOrBuilder extends
             // @@protoc_insertion_point(interface_extends:com.bros.HissAndHit.proto.FinalData)
             com.google.protobuf.MessageOrBuilder {
@@ -402,6 +409,7 @@ public final class Data {
         @SuppressWarnings("serial")
         private java.util.List<com.bros.HissAndHit.proto.Data.Array2D> array2S_;
         private byte memoizedIsInitialized = -1;
+
         // Use Array3D.newBuilder() to construct.
         private Array3D(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -613,9 +621,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-          if (!getArray2SList()
+            if (!getArray2SList()
                     .equals(other.getArray2SList())) return false;
-          return getUnknownFields().equals(other.getUnknownFields());
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -1169,6 +1177,7 @@ public final class Data {
         @SuppressWarnings("serial")
         private java.util.List<com.bros.HissAndHit.proto.Data.Point> array1S_;
         private byte memoizedIsInitialized = -1;
+
         // Use Array2D.newBuilder() to construct.
         private Array2D(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -1380,9 +1389,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-          if (!getArray1SList()
+            if (!getArray1SList()
                     .equals(other.getArray1SList())) return false;
-          return getUnknownFields().equals(other.getUnknownFields());
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -1938,6 +1947,7 @@ public final class Data {
         private Point(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
+
         private Point() {
         }
 
@@ -2128,11 +2138,11 @@ public final class Data {
                 return super.equals(obj);
             }
 
-          if (getX()
+            if (getX()
                     != other.getX()) return false;
             if (getY()
                     != other.getY()) return false;
-          return getUnknownFields().equals(other.getUnknownFields());
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -2467,6 +2477,7 @@ public final class Data {
         @SuppressWarnings("serial")
         private java.util.List<com.bros.HissAndHit.proto.Data.MetaData> data_;
         private byte memoizedIsInitialized = -1;
+
         // Use PlayersMetaData.newBuilder() to construct.
         private PlayersMetaData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -2678,9 +2689,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-          if (!getDataList()
+            if (!getDataList()
                     .equals(other.getDataList())) return false;
-          return getUnknownFields().equals(other.getUnknownFields());
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -3450,13 +3461,13 @@ public final class Data {
                 return super.equals(obj);
             }
 
-          if (getIsDead()
+            if (getIsDead()
                     != other.getIsDead()) return false;
             if (getKilledBy()
                     != other.getKilledBy()) return false;
             if (getScore()
                     != other.getScore()) return false;
-          return getUnknownFields().equals(other.getUnknownFields());
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -3843,6 +3854,7 @@ public final class Data {
         @SuppressWarnings("serial")
         private java.util.List<com.bros.HissAndHit.proto.Data.Point> point_;
         private byte memoizedIsInitialized = -1;
+
         // Use Food.newBuilder() to construct.
         private Food(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
@@ -4054,9 +4066,9 @@ public final class Data {
                 return super.equals(obj);
             }
 
-          if (!getPointList()
+            if (!getPointList()
                     .equals(other.getPointList())) return false;
-          return getUnknownFields().equals(other.getUnknownFields());
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -4618,6 +4630,7 @@ public final class Data {
         private FinalData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
+
         private FinalData() {
         }
 
@@ -4879,7 +4892,7 @@ public final class Data {
                 return super.equals(obj);
             }
 
-          if (hasPosition() != other.hasPosition()) return false;
+            if (hasPosition() != other.hasPosition()) return false;
             if (hasPosition()) {
                 if (!getPosition()
                         .equals(other.getPosition())) return false;
@@ -4894,7 +4907,7 @@ public final class Data {
                 if (!getMetaData()
                         .equals(other.getMetaData())) return false;
             }
-          return getUnknownFields().equals(other.getUnknownFields());
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
