@@ -36,6 +36,8 @@ public class MainThread implements Runnable {
             ServerData.loadBarrier.await();
             sendAll(position.getNamesAndColor());
 
+            Thread.sleep(100);
+
             byte[] bytes = Compressor.serialize(ServerData.positions);
             sendBuff(bytes);
 

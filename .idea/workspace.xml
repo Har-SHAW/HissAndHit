@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d71ac6a8-f961-4b01-a696-d4d1007dba3b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/scenes/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/UIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/UIThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/proto/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/proto/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/JoinRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/JoinRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/MainThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/MainThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/PopUps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/PopUps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,17 +75,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

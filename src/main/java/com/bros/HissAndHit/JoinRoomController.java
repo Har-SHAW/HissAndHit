@@ -35,7 +35,6 @@ public class JoinRoomController implements Initializable {
         PlayerData.roomCode = roomCode.getText();
         PlayerData.roomIpAddress = Converter.intToIpv4(Integer.parseInt(roomCode.getText()));
         Player player = new Player();
-        player.start();
-        GameBoard.controllerInput.println(playerName.getText() + ";" + playerColor.getValue().toString().replaceAll("0x", "#"));
+        player.start(playerName.getText(), playerColor.getValue().toString());
     }
 }

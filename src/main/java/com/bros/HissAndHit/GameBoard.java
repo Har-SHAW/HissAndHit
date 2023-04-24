@@ -6,6 +6,7 @@ import com.bros.HissAndHit.utils.Network;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
@@ -38,6 +39,7 @@ public class GameBoard extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(GameBoard.class.getResource(Scenes.INTRO));
         try {
             GameBoard.scene = new Scene(fxmlLoader.load(), 1920, 1080);
+            GameBoard.scene.setFill(Paint.valueOf("black"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

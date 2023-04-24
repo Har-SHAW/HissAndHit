@@ -13,7 +13,7 @@ import java.util.concurrent.CyclicBarrier;
 
 public class Player {
 
-    public void start() throws IOException {
+    public void start(String name, String color) throws IOException {
         PlayerData.UISocket = new Socket(PlayerData.roomIpAddress, Statics.PORT);
         PlayerData.ScoreBoardBarrier = new CyclicBarrier(2);
         BufferedReader in = new BufferedReader(new InputStreamReader(PlayerData.UISocket.getInputStream()));
@@ -21,6 +21,8 @@ public class Player {
 
         PlayerData.controllerSocket = new Socket(PlayerData.roomIpAddress, Statics.PORT + controllerPort);
         GameBoard.controllerInput = new PrintWriter(PlayerData.controllerSocket.getOutputStream(), true);
+
+        GameBoard.controllerInput.println(name + ";" + color.replaceAll("0x", "#"));
 
         Thread thread = new Thread(new UIThread(PlayerData.UISocket), "Player UI Thread");
         thread.start();

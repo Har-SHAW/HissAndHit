@@ -7,6 +7,7 @@ import com.bros.HissAndHit.utils.SnakeBody;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -19,9 +20,9 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
     public static final GridPane matrix = new GridPane();
+    public static final double height = Screen.getPrimary().getBounds().getHeight();
+    public static final double width = Screen.getPrimary().getBounds().getWidth();
     private static final List<Data.Point> resetNodes = new ArrayList<>();
-    private static final double height = Screen.getPrimary().getBounds().getHeight();
-    private static final double width = Screen.getPrimary().getBounds().getWidth();
     public static HBox scoreBoardObj;
     private static List<Label> scores;
     @FXML
@@ -34,10 +35,14 @@ public class GameController implements Initializable {
         for (int i = 0; i < PlayerData.playerNames.length; i++) {
             VBox vBox = new VBox();
             vBox.setPrefHeight(height / 10);
-            vBox.setPrefWidth(width / PlayerData.playerNames.length);
-            vBox.setStyle("-fx-background-color: " + PlayerData.playerColors[i]);
-            vBox.getChildren().add(new Label("Name: " + PlayerData.playerNames[i]));
-            Label label = new Label("Score: 0");
+            vBox.setPrefWidth(width / 4);
+            vBox.setStyle("-fx-border-width: 15; -fx-border-style: solid; -fx-border-color: " + PlayerData.playerColors[i]);
+            vBox.setAlignment(Pos.CENTER);
+            Label label = new Label("Name:  " + PlayerData.playerNames[i]);
+            label.setStyle("-fx-font-size: 20; -fx-font-weight: bold");
+            vBox.getChildren().add(label);
+            label = new Label("Score:  0");
+            label.setStyle("-fx-font-size: 20; -fx-font-weight: bold");
             vBox.getChildren().add(label);
             scores.add(label);
             scoreBoardObj.getChildren().add(vBox);
@@ -46,7 +51,7 @@ public class GameController implements Initializable {
 
     public static void updateScoreBoard() {
         for (int i = 0; i < PlayerData.playerCount; i++) {
-            scores.get(i).setText("Score: " + PlayerData.metaData.getData(i).getScore());
+            scores.get(i).setText("Score:  " + PlayerData.metaData.getData(i).getScore());
         }
     }
 
