@@ -7,7 +7,6 @@
       minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
       prefWidth="600.0"
       spacing="20.0"
-      style="-fx-background-image: url('https://im.indiatimes.in/media/content/2018/Aug/snake_game_1533210447.jpg'); -fx-background-size: cover"
       fx:controller="com.bros.HissAndHit.IntroController">
     <Button mnemonicParsing="false" text="Create Room" textAlignment="CENTER" onAction="#createRoom">
         <font>

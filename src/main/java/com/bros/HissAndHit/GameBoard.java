@@ -44,6 +44,8 @@ public class GameBoard extends Application {
             throw new RuntimeException(e);
         }
 
+        GameBoard.stage.setFullScreen(true);
+        GameBoard.stage.setFullScreenExitHint("");
         GameBoard.stage.setTitle("Hiss and Hit");
         GameBoard.stage.setScene(GameBoard.scene);
     }

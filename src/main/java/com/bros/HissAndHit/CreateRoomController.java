@@ -31,7 +31,7 @@ public class CreateRoomController implements Initializable {
         server.init();
         server.start();
         Thread.sleep(1000);
-        roomCode.setText(PlayerData.roomCode);
+        roomCode.setText("Room Code: " + PlayerData.roomCode);
         joinRoomButton.setDisable(false);
     }
 

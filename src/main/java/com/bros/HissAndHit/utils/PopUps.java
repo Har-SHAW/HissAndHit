@@ -46,13 +46,23 @@ public class PopUps {
             vBox.setAlignment(Pos.CENTER);
             vBox.setStyle("-fx-background-color: white;");
 
+//            PlayerData.metaData.getDataList().sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
+
             for (int i = 0; i < PlayerData.playerNames.length; i++) {
                 VBox vBox1 = new VBox();
                 vBox1.setPrefHeight(GameController.height / 10);
                 vBox1.setPrefWidth(GameController.width / 4);
-                vBox1.setStyle("-fx-border-width: 15; -fx-border-style: solid; -fx-border-color: " + PlayerData.playerColors[i]);
+                vBox1.setStyle("-fx-border-width: 10; -fx-border-style: solid; -fx-border-color: " + PlayerData.playerColors[i]);
                 vBox1.setAlignment(Pos.CENTER);
                 Label label = new Label("Name:  " + PlayerData.playerNames[i]);
+                label.setStyle("-fx-font-size: 20; -fx-font-weight: bold");
+                if (!PlayerData.metaData.getData(i).getIsDead()) {
+                    label = new Label("WINNER");
+                    label.setStyle("-fx-font-size: 40; -fx-font-weight: bold;");
+                    label.setTextFill(Color.GREEN);
+                    vBox1.getChildren().add(label);
+                }
+                label = new Label("Name:  " + PlayerData.playerNames[i]);
                 label.setStyle("-fx-font-size: 20; -fx-font-weight: bold");
                 vBox1.getChildren().add(label);
                 label = new Label("Score:  " + PlayerData.metaData.getData(i).getScore());

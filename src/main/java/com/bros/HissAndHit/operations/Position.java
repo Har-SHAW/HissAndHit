@@ -108,7 +108,11 @@ public class Position {
             }
         }
 
-        return deadCount != ServerData.playerCount;
+        if (ServerData.playerCount == 1) {
+            return deadCount != ServerData.playerCount;
+        } else {
+            return deadCount != ServerData.playerCount - 1;
+        }
     }
 
     public String getNamesAndColor() {
