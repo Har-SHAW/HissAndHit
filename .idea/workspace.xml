@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d71ac6a8-f961-4b01-a696-d4d1007dba3b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/CreateRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/CreateRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/operations/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/operations/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/PopUps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/utils/PopUps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/createroom-scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/createroom-scene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/intro-scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/intro-scene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/joinroom-scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/bros/HissAndHit/joinroom-scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Directions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Directions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Statics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/config/Statics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bros/HissAndHit/host/ControllerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -6,12 +6,12 @@ import java.util.Map;
 public class Directions {
     public static Map<String, Integer> directions = new HashMap<>() {{
         put("W", 0);
-        put("S", 1);
-        put("A", 2);
+        put("A", 1);
+        put("S", 2);
         put("D", 3);
         put("UP", 0);
-        put("DOWN", 1);
-        put("LEFT", 2);
+        put("LEFT", 1);
+        put("DOWN", 2);
         put("RIGHT", 3);
     }};
     public static Map<String, Integer> speed = new HashMap<>() {{
