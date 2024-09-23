@@ -33,7 +33,7 @@ public class JoinRoomController implements Initializable {
 
     public void joinRoom() throws IOException {
         PlayerData.roomCode = roomCode.getText();
-        PlayerData.roomIpAddress = Converter.intToIpv4(Integer.parseInt(roomCode.getText()));
+        PlayerData.roomIpAddress = Converter.longToIpv4(Long.parseLong(roomCode.getText()));
         Player player = new Player();
         player.start(playerName.getText(), playerColor.getValue().toString());
     }

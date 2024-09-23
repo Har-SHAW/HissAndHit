@@ -27,7 +27,7 @@ public class CreateRoomController implements Initializable {
     public void createRoom() throws InterruptedException {
         Server server = new Server();
         ServerData.playerCount = Integer.parseInt(playerCount.getText());
-        PlayerData.roomCode = String.valueOf(Converter.ipv4ToInt(PlayerData.IPAddress));
+        PlayerData.roomCode = String.valueOf(Converter.ipv4ToLong(PlayerData.IPAddress));
         server.init();
         server.start();
         Thread.sleep(1000);

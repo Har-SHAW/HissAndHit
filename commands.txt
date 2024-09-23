@@ -1,0 +1,13 @@
+jpackage \
+        --input target \
+        --name HissAndHit \
+        --main-jar HissAndHit-1.0-SNAPSHOT-jar-with-dependencies.jar \
+        --main-class com.bros.HissAndHit.GameBoard \
+        --type app-image \
+        --java-options "--add-modules javafx.controls,javafx.fxml,javafx.web" \
+        --runtime-image my-runtime
+
+jlink --module-path /path/to/javafx-sdk/lib:$(javapackager -list-module-path) \
+        --add-modules javafx.controls,javafx.fxml,javafx.web \
+        --output my-runtime \
+        --launcher myapp=com.bros.HissAndHit.GameBoard

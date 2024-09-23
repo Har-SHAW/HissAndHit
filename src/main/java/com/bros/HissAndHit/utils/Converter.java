@@ -11,20 +11,20 @@ public class Converter {
         return cantorPair(data.getX(), data.getY());
     }
 
-    public static int ipv4ToInt(String ipAddress) {
+    public static long ipv4ToLong(String ipAddress) {
         String[] octets = ipAddress.split("\\.");
-        int result = 0;
+        long result = 0;
         for (String octet : octets) {
             result = result * 256 + Integer.parseInt(octet);
         }
         return result;
     }
 
-    public static String intToIpv4(int ipAddress) {
-        int d = ipAddress % 256;
-        int c = (ipAddress / 256) % 256;
-        int b = (ipAddress / 65536) % 256;
-        int a = (ipAddress / 16777216) % 256;
+    public static String longToIpv4(long ipAddress) {
+        long d = ipAddress % 256;
+        long c = (ipAddress / 256) % 256;
+        long b = (ipAddress / 65536) % 256;
+        long a = (ipAddress / 16777216) % 256;
         return a + "." + b + "." + c + "." + d;
     }
 }
